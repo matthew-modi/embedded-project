@@ -1,0 +1,4 @@
+.vscode/
+
+hw_verilator/obj_dir/
+hw_verilator/dump.vcd

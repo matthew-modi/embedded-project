@@ -1,0 +1,25 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Fri May  9 20:50:41 2025
+[*]
+[dumpfile] "/mnt/c/Users/matth/Documents/Github/embedded-project/hw_verilator/dump.vcd"
+[dumpfile_mtime] "Fri May  9 20:50:27 2025"
+[dumpfile_size] 1919
+[savefile] "/mnt/c/Users/matth/Documents/Github/embedded-project/hw_verilator/view_top_1_1.gtkw"
+[timestart] 34
+[size] 1000 600
+[pos] -1 -1
+*-2.930160 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] TOP.
+[sst_width] 214
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 151
+@28
+TOP.top.clk
+TOP.top.reset
+TOP.top.d
+@29
+TOP.top.q
+[pattern_trace] 1
+[pattern_trace] 0
