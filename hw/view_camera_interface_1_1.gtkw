@@ -1,0 +1,27 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Sat May 10 23:03:14 2025
+[*]
+[dumpfile] "/mnt/c/Users/matth/Documents/Github/embedded-project/hw/dump.vcd"
+[dumpfile_mtime] "Sat May 10 23:02:54 2025"
+[dumpfile_size] 33397961
+[savefile] "/mnt/c/Users/matth/Documents/Github/embedded-project/hw/view_camera_interface_1_1.gtkw"
+[timestart] 462101
+[size] 1000 600
+[pos] 399 348
+*-5.930161 462200 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] TOP.
+[sst_width] 214
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 151
+@28
+TOP.camera_interface.clk
+TOP.camera_interface.reset
+TOP.camera_interface.vsync
+TOP.camera_interface.href
+TOP.camera_interface.hsync
+@23
+TOP.camera_interface.d[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
