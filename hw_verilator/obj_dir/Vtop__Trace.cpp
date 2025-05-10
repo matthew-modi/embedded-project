@@ -24,8 +24,11 @@ void Vtop::traceChgSub0(void* userp, VerilatedVcd* tracep) {
     {
         tracep->chgBit(oldp+0,(vlTOPp->clk));
         tracep->chgBit(oldp+1,(vlTOPp->reset));
-        tracep->chgBit(oldp+2,(vlTOPp->d));
-        tracep->chgBit(oldp+3,(vlTOPp->q));
+        tracep->chgCData(oldp+2,(vlTOPp->d),8);
+        tracep->chgBit(oldp+3,(vlTOPp->href));
+        tracep->chgBit(oldp+4,(vlTOPp->vsync));
+        tracep->chgBit(oldp+5,(vlTOPp->hsync));
+        tracep->chgCData(oldp+6,(vlTOPp->q),8);
     }
 }
 

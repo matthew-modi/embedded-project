@@ -31,7 +31,7 @@ void Vtop::eval_step() {
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("top.sv", 3, "",
+            VL_FATAL_MT("top.sv", 1, "",
                 "Verilated model didn't converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {
@@ -57,7 +57,7 @@ void Vtop::_eval_initial_loop(Vtop__Syms* __restrict vlSymsp) {
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("top.sv", 3, "",
+            VL_FATAL_MT("top.sv", 1, "",
                 "Verilated model didn't DC converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {
@@ -70,7 +70,13 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__1(Vtop__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop::_sequent__TOP__1\n"); );
     Vtop* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    vlTOPp->q = ((~ (IData)(vlTOPp->reset)) & (IData)(vlTOPp->d));
+    if (vlTOPp->reset) {
+        vlTOPp->q = 0U;
+    } else {
+        if (vlTOPp->href) {
+            vlTOPp->q = vlTOPp->d;
+        }
+    }
 }
 
 void Vtop::_eval(Vtop__Syms* __restrict vlSymsp) {
@@ -110,7 +116,11 @@ void Vtop::_eval_debug_assertions() {
         Verilated::overWidthError("clk");}
     if (VL_UNLIKELY((reset & 0xfeU))) {
         Verilated::overWidthError("reset");}
-    if (VL_UNLIKELY((d & 0xfeU))) {
-        Verilated::overWidthError("d");}
+    if (VL_UNLIKELY((href & 0xfeU))) {
+        Verilated::overWidthError("href");}
+    if (VL_UNLIKELY((vsync & 0xfeU))) {
+        Verilated::overWidthError("vsync");}
+    if (VL_UNLIKELY((hsync & 0xfeU))) {
+        Verilated::overWidthError("hsync");}
 }
 #endif  // VL_DEBUG

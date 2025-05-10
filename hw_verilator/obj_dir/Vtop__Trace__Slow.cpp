@@ -46,12 +46,18 @@ void Vtop::traceInitSub0(void* userp, VerilatedVcd* tracep) {
     {
         tracep->declBit(c+1,"clk", false,-1);
         tracep->declBit(c+2,"reset", false,-1);
-        tracep->declBit(c+3,"d", false,-1);
-        tracep->declBit(c+4,"q", false,-1);
+        tracep->declBus(c+3,"d", false,-1, 7,0);
+        tracep->declBit(c+4,"href", false,-1);
+        tracep->declBit(c+5,"vsync", false,-1);
+        tracep->declBit(c+6,"hsync", false,-1);
+        tracep->declBus(c+7,"q", false,-1, 7,0);
         tracep->declBit(c+1,"top clk", false,-1);
         tracep->declBit(c+2,"top reset", false,-1);
-        tracep->declBit(c+3,"top d", false,-1);
-        tracep->declBit(c+4,"top q", false,-1);
+        tracep->declBus(c+3,"top d", false,-1, 7,0);
+        tracep->declBit(c+4,"top href", false,-1);
+        tracep->declBit(c+5,"top vsync", false,-1);
+        tracep->declBit(c+6,"top hsync", false,-1);
+        tracep->declBus(c+7,"top q", false,-1, 7,0);
     }
 }
 
@@ -82,7 +88,10 @@ void Vtop::traceFullSub0(void* userp, VerilatedVcd* tracep) {
     {
         tracep->fullBit(oldp+1,(vlTOPp->clk));
         tracep->fullBit(oldp+2,(vlTOPp->reset));
-        tracep->fullBit(oldp+3,(vlTOPp->d));
-        tracep->fullBit(oldp+4,(vlTOPp->q));
+        tracep->fullCData(oldp+3,(vlTOPp->d),8);
+        tracep->fullBit(oldp+4,(vlTOPp->href));
+        tracep->fullBit(oldp+5,(vlTOPp->vsync));
+        tracep->fullBit(oldp+6,(vlTOPp->hsync));
+        tracep->fullCData(oldp+7,(vlTOPp->q),8);
     }
 }

@@ -53,8 +53,11 @@ void Vtop::_ctor_var_reset() {
     // Body
     clk = VL_RAND_RESET_I(1);
     reset = VL_RAND_RESET_I(1);
-    d = VL_RAND_RESET_I(1);
-    q = VL_RAND_RESET_I(1);
+    d = VL_RAND_RESET_I(8);
+    href = VL_RAND_RESET_I(1);
+    vsync = VL_RAND_RESET_I(1);
+    hsync = VL_RAND_RESET_I(1);
+    q = VL_RAND_RESET_I(8);
     { int __Vi0=0; for (; __Vi0<1; ++__Vi0) {
             __Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
     }}

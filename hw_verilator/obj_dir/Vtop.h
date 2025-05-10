@@ -26,8 +26,11 @@ VL_MODULE(Vtop) {
     // propagate new values into/out from the Verilated model.
     VL_IN8(clk,0,0);
     VL_IN8(reset,0,0);
-    VL_IN8(d,0,0);
-    VL_OUT8(q,0,0);
+    VL_IN8(d,7,0);
+    VL_IN8(href,0,0);
+    VL_IN8(vsync,0,0);
+    VL_IN8(hsync,0,0);
+    VL_OUT8(q,7,0);
     
     // LOCAL VARIABLES
     // Internals; generally not touched by application code
