@@ -5,7 +5,7 @@
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
 
-#define I2C_BUS   "/dev/i2c-1"
+#define I2C_BUS   "/dev/i2c-0"
 #define SCCB_ADDR 0x21    // OV7670 7-bit address (0x42>>1)
 
 /// Write one byte to camera register via raw I²C
