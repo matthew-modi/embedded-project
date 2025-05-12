@@ -7,6 +7,7 @@
 
 #define I2C_BUS   "/dev/i2c-0"
 #define SCCB_ADDR 0x21    // OV7670 7-bit address (0x42>>1)
+#define HPS_I2C_CONTROL  0x00080000
 
 /// Write one byte to camera register via raw I²C
 static int write_reg(int fd, uint8_t reg, uint8_t val) {
@@ -57,6 +58,18 @@ static const struct regval ov7670_init[] = {
 };
 
 int configure_sccb(void) {
+    alt_setbits_word(
+        virtual_base + (ALT_GPIO1_SWPORTA_DDR_ADDR & HW_REGS_MASK),
+        HPS_I2C_CONTROL
+    );
+      
+    alt_setbits_word(
+        virtual_base + (ALT_GPIO1_SWPORTA_DR_ADDR & HW_REGS_MASK),
+        HPS_I2C_CONTROL
+    );
+      
+
+
     int fd = open(I2C_BUS, O_RDWR);
     if (fd < 0) { perror("open"); return -1; }
     for (int i = 0; ov7670_init[i].reg != 0xFF; i++) {
