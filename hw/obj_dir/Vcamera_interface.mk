@@ -60,7 +60,7 @@ sim_camera_interface_1.o: sim_camera_interface_1.cpp
 
 ### Link rules... (from --exe)
 Vcamera_interface: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a
-	$(LINK) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) $(LIBS) $(SC_LIBS) -o $@
+	$(LINK) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $@ $(LIBS) $(SC_LIBS)
 
 
 # Verilated -*- Makefile -*-

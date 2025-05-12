@@ -7,10 +7,28 @@
 
 //==========
 
-void Vcamera_interface::eval_step() {
+VL_CTOR_IMP(Vcamera_interface) {
+    Vcamera_interface__Syms* __restrict vlSymsp = __VlSymsp = new Vcamera_interface__Syms(this, name());
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Reset internal values
+    
+    // Reset structure values
+    _ctor_var_reset();
+}
+
+void Vcamera_interface::__Vconfigure(Vcamera_interface__Syms* vlSymsp, bool first) {
+    if (0 && first) {}  // Prevent unused
+    this->__VlSymsp = vlSymsp;
+}
+
+Vcamera_interface::~Vcamera_interface() {
+    delete __VlSymsp; __VlSymsp=NULL;
+}
+
+void Vcamera_interface::eval() {
     VL_DEBUG_IF(VL_DBG_MSGF("+++++TOP Evaluate Vcamera_interface::eval\n"); );
     Vcamera_interface__Syms* __restrict vlSymsp = this->__VlSymsp;  // Setup global symbol table
-    Vcamera_interface* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
 #ifdef VL_DEBUG
     // Debug assertions
     _eval_debug_assertions();
@@ -66,42 +84,382 @@ void Vcamera_interface::_eval_initial_loop(Vcamera_interface__Syms* __restrict v
     } while (VL_UNLIKELY(__Vchange));
 }
 
-VL_INLINE_OPT void Vcamera_interface::_sequent__TOP__1(Vcamera_interface__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_sequent__TOP__1\n"); );
-    Vcamera_interface* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+VL_INLINE_OPT void Vcamera_interface::_combo__TOP__1(Vcamera_interface__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_combo__TOP__1\n"); );
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    if (vlTOPp->reset) {
-        vlTOPp->q = 0U;
+    vlTOPp->clk = vlTOPp->pclk;
+}
+
+void Vcamera_interface::_settle__TOP__2(Vcamera_interface__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_settle__TOP__2\n"); );
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    vlTOPp->clk = vlTOPp->pclk;
+    vlTOPp->camera_interface__DOT__write_enable = (
+                                                   ((IData)(vlTOPp->href) 
+                                                    & (0xefU 
+                                                       == (IData)(vlTOPp->camera_interface__DOT__row_count)))
+                                                    ? 1U
+                                                    : 0U);
+    vlTOPp->camera_interface__DOT__q = ((0xfeU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | (IData)(vlTOPp->camera_interface__DOT____Vcellout__uut0__q));
+    vlTOPp->camera_interface__DOT__q = ((0xfdU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut1__q) 
+                                           << 1U));
+    vlTOPp->camera_interface__DOT__q = ((0xfbU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut2__q) 
+                                           << 2U));
+    vlTOPp->camera_interface__DOT__q = ((0xf7U & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut3__q) 
+                                           << 3U));
+    vlTOPp->camera_interface__DOT__q = ((0xefU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut4__q) 
+                                           << 4U));
+    vlTOPp->camera_interface__DOT__q = ((0xdfU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut5__q) 
+                                           << 5U));
+    vlTOPp->camera_interface__DOT__q = ((0xbfU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut6__q) 
+                                           << 6U));
+    vlTOPp->camera_interface__DOT__q = ((0x7fU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut7__q) 
+                                           << 7U));
+}
+
+VL_INLINE_OPT void Vcamera_interface::_sequent__TOP__3(Vcamera_interface__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_sequent__TOP__3\n"); );
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    if (((IData)(vlTOPp->camera_interface__DOT__write_enable) 
+         & (0U == (IData)(vlTOPp->camera_interface__DOT__clk_count)))) {
+        vlTOPp->fifo_enable = 0U;
     } else {
-        if (vlTOPp->href) {
-            vlTOPp->q = vlTOPp->d;
+        if (((IData)(vlTOPp->camera_interface__DOT__write_enable) 
+             & (1U == (IData)(vlTOPp->camera_interface__DOT__clk_count)))) {
+            vlTOPp->fifo_enable = 0U;
+        } else {
+            if (((IData)(vlTOPp->camera_interface__DOT__write_enable) 
+                 & (2U == (IData)(vlTOPp->camera_interface__DOT__clk_count)))) {
+                vlTOPp->fifo_enable = 0U;
+            } else {
+                if (((IData)(vlTOPp->camera_interface__DOT__write_enable) 
+                     & (3U == (IData)(vlTOPp->camera_interface__DOT__clk_count)))) {
+                    vlTOPp->fifo_enable = 1U;
+                }
+            }
+        }
+    }
+    if (((IData)(vlTOPp->camera_interface__DOT__write_enable) 
+         & (0U == (IData)(vlTOPp->camera_interface__DOT__clk_count)))) {
+        vlTOPp->wide_bit_out = ((0xffff00ffU & vlTOPp->wide_bit_out) 
+                                | ((IData)(vlTOPp->camera_interface__DOT__q) 
+                                   << 8U));
+    } else {
+        if (((IData)(vlTOPp->camera_interface__DOT__write_enable) 
+             & (1U == (IData)(vlTOPp->camera_interface__DOT__clk_count)))) {
+            vlTOPp->wide_bit_out = ((0xffffff00U & vlTOPp->wide_bit_out) 
+                                    | (IData)(vlTOPp->camera_interface__DOT__q));
+        } else {
+            if (((IData)(vlTOPp->camera_interface__DOT__write_enable) 
+                 & (2U == (IData)(vlTOPp->camera_interface__DOT__clk_count)))) {
+                vlTOPp->wide_bit_out = ((0xffffffU 
+                                         & vlTOPp->wide_bit_out) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT__q) 
+                                           << 0x18U));
+            } else {
+                if (((IData)(vlTOPp->camera_interface__DOT__write_enable) 
+                     & (3U == (IData)(vlTOPp->camera_interface__DOT__clk_count)))) {
+                    vlTOPp->wide_bit_out = ((0xff00ffffU 
+                                             & vlTOPp->wide_bit_out) 
+                                            | ((IData)(vlTOPp->camera_interface__DOT__q) 
+                                               << 0x10U));
+                }
+            }
         }
     }
 }
 
+VL_INLINE_OPT void Vcamera_interface::_sequent__TOP__4(Vcamera_interface__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_sequent__TOP__4\n"); );
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Variables
+    CData/*2:0*/ __Vdly__camera_interface__DOT__clk_count;
+    // Body
+    __Vdly__camera_interface__DOT__clk_count = vlTOPp->camera_interface__DOT__clk_count;
+    if ((((IData)(vlTOPp->camera_interface__DOT__write_enable) 
+          & (3U == (IData)(vlTOPp->camera_interface__DOT__clk_count))) 
+         & (0xefU == (IData)(vlTOPp->camera_interface__DOT__row_count)))) {
+        __Vdly__camera_interface__DOT__clk_count = 0U;
+    } else {
+        if (((4U > (IData)(vlTOPp->camera_interface__DOT__clk_count)) 
+             & (IData)(vlTOPp->camera_interface__DOT__write_enable))) {
+            __Vdly__camera_interface__DOT__clk_count 
+                = (7U & ((IData)(1U) + (IData)(vlTOPp->camera_interface__DOT__clk_count)));
+        }
+    }
+    vlTOPp->camera_interface__DOT__clk_count = __Vdly__camera_interface__DOT__clk_count;
+}
+
+VL_INLINE_OPT void Vcamera_interface::_sequent__TOP__5(Vcamera_interface__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_sequent__TOP__5\n"); );
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Variables
+    CData/*1:0*/ __Vdly__camera_interface__DOT__state;
+    CData/*0:0*/ __Vdly__camera_interface__DOT__ready;
+    CData/*0:0*/ __Vdly__camera_interface__DOT__prev_vsync;
+    SData/*10:0*/ __Vdly__camera_interface__DOT__col_count;
+    SData/*8:0*/ __Vdly__camera_interface__DOT__row_count;
+    // Body
+    __Vdly__camera_interface__DOT__col_count = vlTOPp->camera_interface__DOT__col_count;
+    __Vdly__camera_interface__DOT__prev_vsync = vlTOPp->camera_interface__DOT__prev_vsync;
+    __Vdly__camera_interface__DOT__ready = vlTOPp->camera_interface__DOT__ready;
+    __Vdly__camera_interface__DOT__state = vlTOPp->camera_interface__DOT__state;
+    __Vdly__camera_interface__DOT__row_count = vlTOPp->camera_interface__DOT__row_count;
+    if (vlTOPp->empty) {
+        __Vdly__camera_interface__DOT__state = 0U;
+    } else {
+        if ((2U & (IData)(vlTOPp->camera_interface__DOT__state))) {
+            if ((1U & (IData)(vlTOPp->camera_interface__DOT__state))) {
+                if (((~ (IData)(vlTOPp->camera_interface__DOT__prev_vsync)) 
+                     & (IData)(vlTOPp->vsync))) {
+                    __Vdly__camera_interface__DOT__ready = 0U;
+                }
+                __Vdly__camera_interface__DOT__prev_vsync 
+                    = vlTOPp->vsync;
+            } else {
+                if ((((0x4ffU > (IData)(vlTOPp->camera_interface__DOT__col_count)) 
+                      & (IData)(vlTOPp->camera_interface__DOT__ready)) 
+                     & (IData)(vlTOPp->href))) {
+                    __Vdly__camera_interface__DOT__col_count 
+                        = (0x7ffU & ((IData)(1U) + (IData)(vlTOPp->camera_interface__DOT__col_count)));
+                }
+                if ((((0x4ffU == (IData)(vlTOPp->camera_interface__DOT__col_count)) 
+                      & (IData)(vlTOPp->camera_interface__DOT__ready)) 
+                     & (IData)(vlTOPp->href))) {
+                    __Vdly__camera_interface__DOT__row_count 
+                        = (0x1ffU & ((IData)(1U) + (IData)(vlTOPp->camera_interface__DOT__row_count)));
+                    __Vdly__camera_interface__DOT__col_count = 0U;
+                }
+                if ((((0xf0U == (IData)(vlTOPp->camera_interface__DOT__row_count)) 
+                      & (IData)(vlTOPp->camera_interface__DOT__ready)) 
+                     & (IData)(vlTOPp->href))) {
+                    __Vdly__camera_interface__DOT__state = 3U;
+                }
+            }
+        } else {
+            if ((1U & (IData)(vlTOPp->camera_interface__DOT__state))) {
+                if ((((0U == (IData)(vlTOPp->camera_interface__DOT__col_count)) 
+                      & (IData)(vlTOPp->camera_interface__DOT__ready)) 
+                     & (IData)(vlTOPp->href))) {
+                    __Vdly__camera_interface__DOT__row_count 
+                        = (0x1ffU & ((IData)(1U) + (IData)(vlTOPp->camera_interface__DOT__row_count)));
+                }
+                if ((((0x4ffU > (IData)(vlTOPp->camera_interface__DOT__col_count)) 
+                      & (IData)(vlTOPp->camera_interface__DOT__ready)) 
+                     & (IData)(vlTOPp->href))) {
+                    __Vdly__camera_interface__DOT__col_count 
+                        = (0x7ffU & ((IData)(1U) + (IData)(vlTOPp->camera_interface__DOT__col_count)));
+                }
+                if ((((0x4ffU == (IData)(vlTOPp->camera_interface__DOT__col_count)) 
+                      & (IData)(vlTOPp->camera_interface__DOT__ready)) 
+                     & (IData)(vlTOPp->href))) {
+                    __Vdly__camera_interface__DOT__col_count = 0U;
+                }
+                if ((((IData)(vlTOPp->camera_interface__DOT__write_enable) 
+                      & (IData)(vlTOPp->camera_interface__DOT__ready)) 
+                     & (IData)(vlTOPp->href))) {
+                    __Vdly__camera_interface__DOT__state = 2U;
+                }
+                if (((~ (IData)(vlTOPp->camera_interface__DOT__prev_vsync)) 
+                     & (IData)(vlTOPp->vsync))) {
+                    __Vdly__camera_interface__DOT__ready = 0U;
+                }
+                if (((IData)(vlTOPp->camera_interface__DOT__prev_vsync) 
+                     & (~ (IData)(vlTOPp->vsync)))) {
+                    __Vdly__camera_interface__DOT__ready = 1U;
+                }
+                __Vdly__camera_interface__DOT__prev_vsync 
+                    = vlTOPp->vsync;
+            } else {
+                __Vdly__camera_interface__DOT__row_count = 0U;
+                if (vlTOPp->shutter) {
+                    __Vdly__camera_interface__DOT__col_count = 0U;
+                }
+                __Vdly__camera_interface__DOT__state = 1U;
+            }
+        }
+    }
+    vlTOPp->camera_interface__DOT__state = __Vdly__camera_interface__DOT__state;
+    vlTOPp->camera_interface__DOT__ready = __Vdly__camera_interface__DOT__ready;
+    vlTOPp->camera_interface__DOT__prev_vsync = __Vdly__camera_interface__DOT__prev_vsync;
+    vlTOPp->camera_interface__DOT__col_count = __Vdly__camera_interface__DOT__col_count;
+    vlTOPp->camera_interface__DOT__row_count = __Vdly__camera_interface__DOT__row_count;
+}
+
+VL_INLINE_OPT void Vcamera_interface::_sequent__TOP__6(Vcamera_interface__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_sequent__TOP__6\n"); );
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    if (vlTOPp->empty) {
+        vlTOPp->camera_interface__DOT____Vcellout__uut7__q = 0U;
+    } else {
+        if (vlTOPp->href) {
+            vlTOPp->camera_interface__DOT____Vcellout__uut7__q 
+                = (1U & ((IData)(vlTOPp->d) >> 7U));
+        }
+    }
+    if (vlTOPp->empty) {
+        vlTOPp->camera_interface__DOT____Vcellout__uut6__q = 0U;
+    } else {
+        if (vlTOPp->href) {
+            vlTOPp->camera_interface__DOT____Vcellout__uut6__q 
+                = (1U & ((IData)(vlTOPp->d) >> 6U));
+        }
+    }
+    if (vlTOPp->empty) {
+        vlTOPp->camera_interface__DOT____Vcellout__uut5__q = 0U;
+    } else {
+        if (vlTOPp->href) {
+            vlTOPp->camera_interface__DOT____Vcellout__uut5__q 
+                = (1U & ((IData)(vlTOPp->d) >> 5U));
+        }
+    }
+    if (vlTOPp->empty) {
+        vlTOPp->camera_interface__DOT____Vcellout__uut4__q = 0U;
+    } else {
+        if (vlTOPp->href) {
+            vlTOPp->camera_interface__DOT____Vcellout__uut4__q 
+                = (1U & ((IData)(vlTOPp->d) >> 4U));
+        }
+    }
+    if (vlTOPp->empty) {
+        vlTOPp->camera_interface__DOT____Vcellout__uut3__q = 0U;
+    } else {
+        if (vlTOPp->href) {
+            vlTOPp->camera_interface__DOT____Vcellout__uut3__q 
+                = (1U & ((IData)(vlTOPp->d) >> 3U));
+        }
+    }
+    if (vlTOPp->empty) {
+        vlTOPp->camera_interface__DOT____Vcellout__uut2__q = 0U;
+    } else {
+        if (vlTOPp->href) {
+            vlTOPp->camera_interface__DOT____Vcellout__uut2__q 
+                = (1U & ((IData)(vlTOPp->d) >> 2U));
+        }
+    }
+    if (vlTOPp->empty) {
+        vlTOPp->camera_interface__DOT____Vcellout__uut1__q = 0U;
+    } else {
+        if (vlTOPp->href) {
+            vlTOPp->camera_interface__DOT____Vcellout__uut1__q 
+                = (1U & ((IData)(vlTOPp->d) >> 1U));
+        }
+    }
+    if (vlTOPp->empty) {
+        vlTOPp->camera_interface__DOT____Vcellout__uut0__q = 0U;
+    } else {
+        if (vlTOPp->href) {
+            vlTOPp->camera_interface__DOT____Vcellout__uut0__q 
+                = (1U & (IData)(vlTOPp->d));
+        }
+    }
+    vlTOPp->camera_interface__DOT__q = ((0x7fU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut7__q) 
+                                           << 7U));
+    vlTOPp->camera_interface__DOT__q = ((0xbfU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut6__q) 
+                                           << 6U));
+    vlTOPp->camera_interface__DOT__q = ((0xdfU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut5__q) 
+                                           << 5U));
+    vlTOPp->camera_interface__DOT__q = ((0xefU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut4__q) 
+                                           << 4U));
+    vlTOPp->camera_interface__DOT__q = ((0xf7U & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut3__q) 
+                                           << 3U));
+    vlTOPp->camera_interface__DOT__q = ((0xfbU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut2__q) 
+                                           << 2U));
+    vlTOPp->camera_interface__DOT__q = ((0xfdU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | ((IData)(vlTOPp->camera_interface__DOT____Vcellout__uut1__q) 
+                                           << 1U));
+    vlTOPp->camera_interface__DOT__q = ((0xfeU & (IData)(vlTOPp->camera_interface__DOT__q)) 
+                                        | (IData)(vlTOPp->camera_interface__DOT____Vcellout__uut0__q));
+}
+
+VL_INLINE_OPT void Vcamera_interface::_combo__TOP__7(Vcamera_interface__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_combo__TOP__7\n"); );
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    vlTOPp->camera_interface__DOT__write_enable = (
+                                                   ((IData)(vlTOPp->href) 
+                                                    & (0xefU 
+                                                       == (IData)(vlTOPp->camera_interface__DOT__row_count)))
+                                                    ? 1U
+                                                    : 0U);
+}
+
 void Vcamera_interface::_eval(Vcamera_interface__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_eval\n"); );
-    Vcamera_interface* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    if ((((IData)(vlTOPp->clk) & (~ (IData)(vlTOPp->__Vclklast__TOP__clk))) 
-         | ((IData)(vlTOPp->reset) & (~ (IData)(vlTOPp->__Vclklast__TOP__reset))))) {
-        vlTOPp->_sequent__TOP__1(vlSymsp);
+    vlTOPp->_combo__TOP__1(vlSymsp);
+    vlTOPp->__Vm_traceActivity = (2U | vlTOPp->__Vm_traceActivity);
+    if (((~ (IData)(vlTOPp->pclk)) & (IData)(vlTOPp->__Vclklast__TOP__pclk))) {
+        vlTOPp->_sequent__TOP__3(vlSymsp);
     }
+    if (((IData)(vlTOPp->pclk) & (~ (IData)(vlTOPp->__Vclklast__TOP__pclk)))) {
+        vlTOPp->_sequent__TOP__4(vlSymsp);
+        vlTOPp->__Vm_traceActivity = (4U | vlTOPp->__Vm_traceActivity);
+    }
+    if (((((IData)(vlTOPp->empty) & (~ (IData)(vlTOPp->__Vclklast__TOP__empty))) 
+          | ((IData)(vlTOPp->pclk) & (~ (IData)(vlTOPp->__Vclklast__TOP__pclk)))) 
+         | ((IData)(vlTOPp->shutter) & (~ (IData)(vlTOPp->__Vclklast__TOP__shutter))))) {
+        vlTOPp->_sequent__TOP__5(vlSymsp);
+        vlTOPp->__Vm_traceActivity = (8U | vlTOPp->__Vm_traceActivity);
+    }
+    if ((((IData)(vlTOPp->empty) & (~ (IData)(vlTOPp->__Vclklast__TOP__empty))) 
+         | ((IData)(vlTOPp->pclk) & (~ (IData)(vlTOPp->__Vclklast__TOP__pclk))))) {
+        vlTOPp->_sequent__TOP__6(vlSymsp);
+        vlTOPp->__Vm_traceActivity = (0x10U | vlTOPp->__Vm_traceActivity);
+    }
+    vlTOPp->_combo__TOP__7(vlSymsp);
     // Final
-    vlTOPp->__Vclklast__TOP__clk = vlTOPp->clk;
-    vlTOPp->__Vclklast__TOP__reset = vlTOPp->reset;
+    vlTOPp->__Vclklast__TOP__pclk = vlTOPp->pclk;
+    vlTOPp->__Vclklast__TOP__empty = vlTOPp->empty;
+    vlTOPp->__Vclklast__TOP__shutter = vlTOPp->shutter;
+}
+
+void Vcamera_interface::_eval_initial(Vcamera_interface__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_eval_initial\n"); );
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    vlTOPp->__Vclklast__TOP__pclk = vlTOPp->pclk;
+    vlTOPp->__Vclklast__TOP__empty = vlTOPp->empty;
+    vlTOPp->__Vclklast__TOP__shutter = vlTOPp->shutter;
+}
+
+void Vcamera_interface::final() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::final\n"); );
+    // Variables
+    Vcamera_interface__Syms* __restrict vlSymsp = this->__VlSymsp;
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+}
+
+void Vcamera_interface::_eval_settle(Vcamera_interface__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_eval_settle\n"); );
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    vlTOPp->_settle__TOP__2(vlSymsp);
+    vlTOPp->__Vm_traceActivity = (1U | vlTOPp->__Vm_traceActivity);
 }
 
 VL_INLINE_OPT QData Vcamera_interface::_change_request(Vcamera_interface__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_change_request\n"); );
-    Vcamera_interface* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
-    // Body
-    return (vlTOPp->_change_request_1(vlSymsp));
-}
-
-VL_INLINE_OPT QData Vcamera_interface::_change_request_1(Vcamera_interface__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_change_request_1\n"); );
-    Vcamera_interface* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    Vcamera_interface* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     // Change detection
     QData __req = false;  // Logically a bool
@@ -112,15 +470,46 @@ VL_INLINE_OPT QData Vcamera_interface::_change_request_1(Vcamera_interface__Syms
 void Vcamera_interface::_eval_debug_assertions() {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_eval_debug_assertions\n"); );
     // Body
-    if (VL_UNLIKELY((clk & 0xfeU))) {
-        Verilated::overWidthError("clk");}
-    if (VL_UNLIKELY((reset & 0xfeU))) {
-        Verilated::overWidthError("reset");}
     if (VL_UNLIKELY((href & 0xfeU))) {
         Verilated::overWidthError("href");}
     if (VL_UNLIKELY((vsync & 0xfeU))) {
         Verilated::overWidthError("vsync");}
-    if (VL_UNLIKELY((hsync & 0xfeU))) {
-        Verilated::overWidthError("hsync");}
+    if (VL_UNLIKELY((pclk & 0xfeU))) {
+        Verilated::overWidthError("pclk");}
+    if (VL_UNLIKELY((shutter & 0xfeU))) {
+        Verilated::overWidthError("shutter");}
+    if (VL_UNLIKELY((empty & 0xfeU))) {
+        Verilated::overWidthError("empty");}
 }
 #endif  // VL_DEBUG
+
+void Vcamera_interface::_ctor_var_reset() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcamera_interface::_ctor_var_reset\n"); );
+    // Body
+    href = VL_RAND_RESET_I(1);
+    vsync = VL_RAND_RESET_I(1);
+    pclk = VL_RAND_RESET_I(1);
+    d = VL_RAND_RESET_I(8);
+    shutter = VL_RAND_RESET_I(1);
+    empty = VL_RAND_RESET_I(1);
+    fifo_enable = VL_RAND_RESET_I(1);
+    wide_bit_out = VL_RAND_RESET_I(32);
+    clk = VL_RAND_RESET_I(1);
+    camera_interface__DOT__state = VL_RAND_RESET_I(2);
+    camera_interface__DOT__col_count = VL_RAND_RESET_I(11);
+    camera_interface__DOT__row_count = VL_RAND_RESET_I(9);
+    camera_interface__DOT__clk_count = VL_RAND_RESET_I(3);
+    camera_interface__DOT__q = VL_RAND_RESET_I(8);
+    camera_interface__DOT__write_enable = VL_RAND_RESET_I(1);
+    camera_interface__DOT__prev_vsync = VL_RAND_RESET_I(1);
+    camera_interface__DOT__ready = VL_RAND_RESET_I(1);
+    camera_interface__DOT____Vcellout__uut0__q = VL_RAND_RESET_I(1);
+    camera_interface__DOT____Vcellout__uut1__q = VL_RAND_RESET_I(1);
+    camera_interface__DOT____Vcellout__uut2__q = VL_RAND_RESET_I(1);
+    camera_interface__DOT____Vcellout__uut3__q = VL_RAND_RESET_I(1);
+    camera_interface__DOT____Vcellout__uut4__q = VL_RAND_RESET_I(1);
+    camera_interface__DOT____Vcellout__uut5__q = VL_RAND_RESET_I(1);
+    camera_interface__DOT____Vcellout__uut6__q = VL_RAND_RESET_I(1);
+    camera_interface__DOT____Vcellout__uut7__q = VL_RAND_RESET_I(1);
+    __Vm_traceActivity = 0;
+}

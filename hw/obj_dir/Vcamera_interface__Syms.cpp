@@ -11,7 +11,6 @@ Vcamera_interface__Syms::Vcamera_interface__Syms(Vcamera_interface* topp, const 
     // Setup locals
     : __Vm_namep(namep)
     , __Vm_activity(false)
-    , __Vm_baseCode(0)
     , __Vm_didInit(false)
     // Setup submodule names
 {
