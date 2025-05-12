@@ -4,7 +4,6 @@ module camera_interface (
     input logic [7:0] d,
     input logic href,
     input logic vsync,
-    input logic hsync,
     output logic [7:0] q
 );
     always_ff @(posedge clk or posedge reset) begin
