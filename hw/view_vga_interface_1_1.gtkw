@@ -1,0 +1,39 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Tue May 13 20:05:32 2025
+[*]
+[dumpfile] "/mnt/c/Users/matth/Documents/Github/embedded-project/hw/dump.vcd"
+[dumpfile_mtime] "Tue May 13 20:03:25 2025"
+[dumpfile_size] 45179960
+[savefile] "/mnt/c/Users/matth/Documents/Github/embedded-project/hw/view_vga_interface_1_1.gtkw"
+[timestart] 148859
+[size] 1000 600
+[pos] -1 -1
+*-2.000000 148865 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] TOP.
+[sst_width] 214
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 151
+@28
+TOP.vga_interface.pclk
+TOP.vga_interface.cam_vsync
+TOP.vga_interface.cam_href
+@22
+TOP.vga_interface.cam_data[7:0]
+@200
+-
+@28
+TOP.vga_interface.VGA_CLK
+@22
+TOP.vga_interface.VGA_R[7:0]
+TOP.vga_interface.VGA_G[7:0]
+TOP.vga_interface.VGA_B[7:0]
+@28
+TOP.vga_interface.VGA_BLANK_n
+TOP.vga_interface.VGA_SYNC_n
+TOP.vga_interface.VGA_VS
+@29
+TOP.vga_interface.VGA_HS
+[pattern_trace] 1
+[pattern_trace] 0
