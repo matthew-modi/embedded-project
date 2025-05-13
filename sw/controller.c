@@ -69,15 +69,30 @@ int configure_sccb(void) {
 
     for (int i = 0; ov7670_init[i].reg != 0xFF; i++) {
         if (write_reg(fd, ov7670_init[i].reg, ov7670_init[i].val) < 0) {
+            fprintf(stderr, "Error! Failed to write reg 0x%02X\n", ov7670_init[i].reg);
             close(fd);
             return -1;
         }
+        
+        // Read back to verify
+        uint8_t val;
+        if (read_reg(fd, ov7670_init[i].reg, &val) == 0) {
+            if (val != ov7670_init[i].val) {
+                fprintf(stderr, "Error! Register 0x%02X: expected 0x%02X, got 0x%02X\n",
+                        ov7670_init[i].reg, ov7670_init[i].val, val);
+                close(fd);
+                return -1;
+            }
+        } else {
+            fprintf(stderr, "Error! Readback of register 0x%02X\n", ov7670_init[i].reg);
+            close(fd);
+            return -1;
+        }
+            
         usleep(500);
     }
 
-    uint8_t pid;
-    if (read_reg(fd, 0x0A, &pid) == 0)
-        printf("PID MSB = 0x%02X\n", pid);
+    
 
     close(fd);
     return 0;
