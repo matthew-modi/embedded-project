@@ -3,6 +3,14 @@
 
 #include <stdint.h>
 
-void process_barcode(uint8_t *scanline);
+typedef struct {
+    uint8_t b : 5;
+    uint8_t g : 6;
+    uint8_t r : 5;
+} rgb565_t;
 
-#endif
+// Returns a malloc’d 13-byte string (12 digits + '\0'), or NULL on failure.
+// Caller must free() it.
+char *process_barcode(rgb565_t *pixels, int len);
+
+#endif // BARCODE_DECODER_H
