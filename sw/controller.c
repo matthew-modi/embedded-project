@@ -11,7 +11,7 @@
 // #include <stdlib.h>
 // #include <errno.h>
 
-// #define I2C_BUS        "/dev/i2c-0"
+// #define I2C_BUS        "/dev/i2c-1"
 // #define SCCB_ADDR      0x21        // OV7670 7-bit (0x42>>1)
 
 // // Simple write byte via raw I2C
@@ -92,53 +92,50 @@
 //     return EXIT_SUCCESS;
 // }
 
-
-
-// read_reg_simple.c
-// Read register 0x00 from I²C device at 7-bit address 0x53 (0xA6/0xA7 on the bus)
+// read_cam_reg.c
+// Simple SCCB read of OV7670 register 0x0A via /dev/i2c-1
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
 #include <stdint.h>
-#include <stdlib.h>
 
-#define I2C_DEV    "/dev/i2c-0"
-#define SLAVE_ADDR 0x53    // 0xA6>>1 = 0x53
+#define I2C_BUS   "/dev/i2c-1"
+#define CAM_ADDR  0x21    // 7-bit (0x42>>1)
+#define REG_ADDR  0x0A    // Product ID MSB
 
 int main(void) {
-    int fd = open(I2C_DEV, O_RDWR);
+    int fd = open(I2C_BUS, O_RDWR);
     if (fd < 0) {
-        perror("open");
-        return EXIT_FAILURE;
+        perror("open " I2C_BUS);
+        return 1;
     }
 
-    if (ioctl(fd, I2C_SLAVE, SLAVE_ADDR) < 0) {
+    if (ioctl(fd, I2C_SLAVE, CAM_ADDR) < 0) {
         perror("ioctl I2C_SLAVE");
         close(fd);
-        return EXIT_FAILURE;
+        return 1;
     }
 
-    uint8_t reg = 0x00;
-    // tell the device which register we want
-    if (write(fd, &reg, 1) != 1) {
+    // select register
+    if (write(fd, (uint8_t[]){REG_ADDR}, 1) != 1) {
         perror("write reg");
         close(fd);
-        return EXIT_FAILURE;
+        return 1;
     }
 
+    // read value
     uint8_t val;
-    // read back one byte
     if (read(fd, &val, 1) != 1) {
         perror("read val");
         close(fd);
-        return EXIT_FAILURE;
+        return 1;
     }
 
-    printf("Register 0x00 = 0x%02X\n", val);
-
+    printf("Register 0x%02X = 0x%02X\n", REG_ADDR, val);
     close(fd);
-    return EXIT_SUCCESS;
+    return 0;
 }
