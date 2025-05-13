@@ -4,6 +4,10 @@
 
 `timescale 1 ps / 1 ps
 module soc_system (
+		input  wire [7:0]  cam_data,                     //      cam.data
+		input  wire        cam_href,                     //         .href
+		input  wire        cam_vsync,                    //         .vsync
+		input  wire        cam_clk_clk,                  //  cam_clk.clk
 		input  wire        clk_clk,                      //      clk.clk
 		output wire        hps_hps_io_emac1_inst_TX_CLK, //      hps.hps_io_emac1_inst_TX_CLK
 		output wire        hps_hps_io_emac1_inst_TXD0,   //         .hps_io_emac1_inst_TXD0
@@ -70,7 +74,15 @@ module soc_system (
 		output wire        hps_ddr3_mem_odt,             //         .mem_odt
 		output wire [3:0]  hps_ddr3_mem_dm,              //         .mem_dm
 		input  wire        hps_ddr3_oct_rzqin,           //         .oct_rzqin
-		input  wire        reset_reset_n                 //    reset.reset_n
+		input  wire        reset_reset_n,                //    reset.reset_n
+		output wire [7:0]  vga_b,                        //      vga.b
+		output wire        vga_blank_n,                  //         .blank_n
+		output wire        vga_clk,                      //         .clk
+		output wire [7:0]  vga_g,                        //         .g
+		output wire        vga_hs,                       //         .hs
+		output wire [7:0]  vga_r,                        //         .r
+		output wire        vga_sync_n,                   //         .sync_n
+		output wire        vga_vs                        //         .vs
 	);
 
 	soc_system_hps_0 #(
@@ -257,6 +269,22 @@ module soc_system (
 		.h2f_lw_RLAST             (),                             //                  .rlast
 		.h2f_lw_RVALID            (),                             //                  .rvalid
 		.h2f_lw_RREADY            ()                              //                  .rready
+	);
+
+	vga_interface vga_interface_0 (
+		.reset       (~reset_reset_n), // reset.reset
+		.VGA_B       (vga_b),          //   vga.b
+		.VGA_BLANK_n (vga_blank_n),    //      .blank_n
+		.VGA_CLK     (vga_clk),        //      .clk
+		.VGA_G       (vga_g),          //      .g
+		.VGA_HS      (vga_hs),         //      .hs
+		.VGA_R       (vga_r),          //      .r
+		.VGA_SYNC_n  (vga_sync_n),     //      .sync_n
+		.VGA_VS      (vga_vs),         //      .vs
+		.pclk        (cam_clk_clk),    // clock.clk
+		.cam_data    (cam_data),       //   cam.data
+		.cam_href    (cam_href),       //      .href
+		.cam_vsync   (cam_vsync)       //      .vsync
 	);
 
 endmodule

@@ -1,5 +1,9 @@
 	component soc_system is
 		port (
+			cam_data                     : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- data
+			cam_href                     : in    std_logic                     := 'X';             -- href
+			cam_vsync                    : in    std_logic                     := 'X';             -- vsync
+			cam_clk_clk                  : in    std_logic                     := 'X';             -- clk
 			clk_clk                      : in    std_logic                     := 'X';             -- clk
 			hps_hps_io_emac1_inst_TX_CLK : out   std_logic;                                        -- hps_io_emac1_inst_TX_CLK
 			hps_hps_io_emac1_inst_TXD0   : out   std_logic;                                        -- hps_io_emac1_inst_TXD0
@@ -66,7 +70,15 @@
 			hps_ddr3_mem_odt             : out   std_logic;                                        -- mem_odt
 			hps_ddr3_mem_dm              : out   std_logic_vector(3 downto 0);                     -- mem_dm
 			hps_ddr3_oct_rzqin           : in    std_logic                     := 'X';             -- oct_rzqin
-			reset_reset_n                : in    std_logic                     := 'X'              -- reset_n
+			reset_reset_n                : in    std_logic                     := 'X';             -- reset_n
+			vga_b                        : out   std_logic_vector(7 downto 0);                     -- b
+			vga_blank_n                  : out   std_logic;                                        -- blank_n
+			vga_clk                      : out   std_logic;                                        -- clk
+			vga_g                        : out   std_logic_vector(7 downto 0);                     -- g
+			vga_hs                       : out   std_logic;                                        -- hs
+			vga_r                        : out   std_logic_vector(7 downto 0);                     -- r
+			vga_sync_n                   : out   std_logic;                                        -- sync_n
+			vga_vs                       : out   std_logic                                         -- vs
 		);
 	end component soc_system;
 
