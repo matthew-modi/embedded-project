@@ -266,5 +266,5 @@ verilator:
 	./$(OBJDIR)/V$(target)
 	gtkwave dump.vcd $(SIM_VIEW)
 
-clean:
+verilator-clean:
 	rm -rf $(OBJDIR) dump.vcd
