@@ -7,16 +7,29 @@
 #include <errno.h>
 #include <string.h>
 #include "camera.h"
+#include "barcode_decoder.h"
 
 #define DEVICE_PATH "/dev/camera"
-#define OUTPUT_FILE "scanline.raw"
 #define POLL_DELAY_US 1000  // 1 ms between polls
 #define PIXEL_COUNT 640     // Number of 16-bit RGB565 pixels to collect
+
+// Convert RGB565 to 8-bit grayscale
+uint8_t rgb565_to_gray(uint16_t pixel) {
+    uint8_t r = (pixel >> 11) & 0x1F;
+    uint8_t g = (pixel >> 5)  & 0x3F;
+    uint8_t b = pixel & 0x1F;
+
+    r = (r << 3) | (r >> 2);  // scale to 8-bit
+    g = (g << 2) | (g >> 4);
+    b = (b << 3) | (b >> 2);
+
+    return (77 * r + 150 * g + 29 * b) >> 8;  // weighted grayscale
+}
 
 int main() {
     int fd, count = 0;
     uint16_t pixels[PIXEL_COUNT];
-    FILE *outfile;
+    uint8_t grayscale[PIXEL_COUNT];
 
     // Open camera device
     fd = open(DEVICE_PATH, O_RDONLY);
@@ -55,17 +68,13 @@ int main() {
 
     close(fd);
 
-    // Write pixels to file
-    outfile = fopen(OUTPUT_FILE, "wb");
-    if (!outfile) {
-        perror("Failed to open output file");
-        return EXIT_FAILURE;
+    // Convert to grayscale
+    for (int i = 0; i < PIXEL_COUNT; ++i) {
+        grayscale[i] = rgb565_to_gray(pixels[i]);
     }
 
-    fwrite(pixels, sizeof(uint16_t), PIXEL_COUNT, outfile);
-    fclose(outfile);
+    // Process the grayscale scanline
+    process_barcode(grayscale);
 
-    printf("Wrote %d pixels to %s\n", PIXEL_COUNT, OUTPUT_FILE);
     return EXIT_SUCCESS;
 }
-

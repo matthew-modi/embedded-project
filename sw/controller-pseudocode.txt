@@ -46,7 +46,7 @@ void fsm_loop(void) {
             break;
 
         case END_OF_ROW:
-            if (count == 640 && byteflag == B)
+            if (count == 320)
                 state = EMPTY2;
             else
                 state = SHUTTER;  // lost sync
