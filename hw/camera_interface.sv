@@ -1,4 +1,7 @@
 module camera_interface (
+	//mock input 
+	input reset,
+
 	//camera inputs
 	input logic href,
 	input logic vsync,
@@ -6,8 +9,8 @@ module camera_interface (
 	input logic [7:0] d,
 
 	//other inputs 
-	input logic shutter, //assume shutter is active low
-	input logic empty,
+	input logic shutter_raw, //assume shutter is active low
+
 	//outputs 
 	output logic fifo_enable,
 	output logic [31:0] wide_bit_out,
@@ -29,11 +32,12 @@ module camera_interface (
 	reg [2:0] clk_count;
 	reg [7:0] q;
 
+	logic shutter;
 	logic write_enable;
 	reg prev_vsync;
 	wire curr_vsync; 
-	reg ready;
 	logic write_trigger;
+	logic rst;
 
 	assign clk = pclk;
 	assign curr_vsync = vsync;
@@ -42,48 +46,57 @@ module camera_interface (
 
 	assign write_trigger = write_enable;
 
-	always_ff @(posedge pclk or posedge shutter or posedge empty) begin
-		if (empty)      state <= RESET;
-		else case (state)
-			RESET : begin
-				if (shutter) 
-					col_count <= 11'b0;
-					row_count <= 9'b0;
-					state <= SHUTTER;
-			end
-			SHUTTER : begin
-				if (prev_vsync == 1'b0 && curr_vsync == 1'b1)
-					ready <= 0;
-				if ((prev_vsync == 1'b1 && curr_vsync == 1'b0))
-					ready <= 1;
-				prev_vsync <= curr_vsync; 
-				if ((col_count == 11'd0) && (ready) && (href))
-					row_count <= row_count + 1;
-				if ((col_count < 11'd1279) && (ready) && (href))
-					col_count <= col_count + 1;
-				if ((col_count == 11'd1279) && (ready) && (href)) begin
-					col_count <= 0;
+	always_ff @(posedge pclk) begin
+
+		if (reset) begin
+			state      <= RESET;
+			col_count  <= 0;
+			row_count  <= 0;
+			clk_count  <= 0;
+			prev_vsync <= 0;
+			fifo_enable <= 0;
+			wide_bit_out <= 0;
+			rst <= 1;
+		end else begin
+			if ((shutter) && ((row_count < 1) || (row_count > 240)))
+				state <= RESET; 
+			else case (state)
+				RESET : begin
+					if (vsync) begin
+						col_count <= 11'b0;
+						row_count <= 9'b0;
+						state <= SHUTTER;
+						rst <= 1;
+					end
 				end
-				if ((write_trigger) && (ready) && (href))
-					state <= WRITE;
-			end
-			WRITE : begin
-				if ((col_count < 11'd1279) && (ready) && (href))
-					col_count <= col_count + 1;
-				if ((col_count == 11'd1279) && (ready) && (href)) begin
-					col_count <= 0;
-					row_count <= row_count + 1;
+				SHUTTER : begin
+					rst <= 0;
+					if ((col_count == 11'd0) && (href))
+						row_count <= row_count + 1;
+					if ((col_count < 11'd1279) && (href))
+						col_count <= col_count + 1;
+					if ((col_count == 11'd1279) && (href)) begin
+						col_count <= 0;
+					end
+					if ((write_trigger) && (href))
+						state <= WRITE;
 				end
-				if ((row_count==240) && (ready) && (href))
-					state <= BLOCK;
-			end
-			BLOCK : begin
-				if (prev_vsync == 1'b0 && curr_vsync == 1'b1)
-					ready <= 0;
-				prev_vsync <= curr_vsync; 
-			end
-			default: state <= BLOCK;
-		endcase
+				WRITE : begin
+					if ((col_count < 11'd1279) && (href))
+						col_count <= col_count + 1;
+					if ((col_count == 11'd1279) && (href)) begin
+						col_count <= 0;
+						row_count <= row_count + 1;
+					end
+					if ((row_count==240) && (href))
+						state <= BLOCK;
+				end
+				BLOCK : begin
+					prev_vsync <= curr_vsync; 
+				end
+				default: state <= BLOCK;
+			endcase
+		end	
 	end
 
 	always_ff @(posedge pclk) begin
@@ -113,16 +126,16 @@ module camera_interface (
 		end 
 	end
 
-	flipflip uut0 (.clk(pclk), .rst(empty), .en(href), .d(d[0]), .q(q[0]));
-	flipflip uut1 (.clk(pclk), .rst(empty), .en(href), .d(d[1]), .q(q[1]));
-	flipflip uut2 (.clk(pclk), .rst(empty), .en(href), .d(d[2]), .q(q[2]));
-	flipflip uut3 (.clk(pclk), .rst(empty), .en(href), .d(d[3]), .q(q[3]));
-	flipflip uut4 (.clk(pclk), .rst(empty), .en(href), .d(d[4]), .q(q[4]));
-	flipflip uut5 (.clk(pclk), .rst(empty), .en(href), .d(d[5]), .q(q[5]));
-	flipflip uut6 (.clk(pclk), .rst(empty), .en(href), .d(d[6]), .q(q[6]));
-	flipflip uut7 (.clk(pclk), .rst(empty), .en(href), .d(d[7]), .q(q[7]));
+	flipflip uut0 (.clk(pclk), .rst(rst), .en(href), .d(d[0]), .q(q[0]));
+	flipflip uut1 (.clk(pclk), .rst(rst), .en(href), .d(d[1]), .q(q[1]));
+	flipflip uut2 (.clk(pclk), .rst(rst), .en(href), .d(d[2]), .q(q[2]));
+	flipflip uut3 (.clk(pclk), .rst(rst), .en(href), .d(d[3]), .q(q[3]));
+	flipflip uut4 (.clk(pclk), .rst(rst), .en(href), .d(d[4]), .q(q[4]));
+	flipflip uut5 (.clk(pclk), .rst(rst), .en(href), .d(d[5]), .q(q[5]));
+	flipflip uut6 (.clk(pclk), .rst(rst), .en(href), .d(d[6]), .q(q[6]));
+	flipflip uut7 (.clk(pclk), .rst(rst), .en(href), .d(d[7]), .q(q[7]));
 
-
+	debounce_better_version uut8(.pb_1(shutter_raw), .clk(pclk), .pb_out(shutter));
 
 
 endmodule

@@ -1,16 +1,18 @@
 [*]
 [*] GTKWave Analyzer v3.3.118 (w)1999-2023 BSI
-[*] Mon May 12 18:55:45 2025
+[*] Tue May 13 04:51:34 2025
 [*]
 [dumpfile] "/homes/user/stud/fall23/hab2175/Documents/EmbeddedSystems/embedded-project/hw/dump.vcd"
-[dumpfile_mtime] "Mon May 12 18:53:38 2025"
-[dumpfile_size] 68326870
+[dumpfile_mtime] "Tue May 13 04:50:33 2025"
+[dumpfile_size] 53439274
 [savefile] "/homes/user/stud/fall23/hab2175/Documents/EmbeddedSystems/embedded-project/hw/view_camera_interface_1_1.gtkw"
-[timestart] 809096
+[timestart] 2
 [size] 1000 600
 [pos] 399 348
-*-1.239851 809098 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-5.239851 49 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] TOP.
+[treeopen] TOP.camera_interface.
+[treeopen] TOP.camera_interface.uut8.
 [sst_width] 275
 [signals_width] 174
 [sst_expanded] 1
@@ -38,7 +40,7 @@ TOP.camera_interface.fifo_enable
 TOP.camera_interface.clk_count[2:0]
 @22
 TOP.camera_interface.q[7:0]
-@c00023
+@c00022
 TOP.camera_interface.wide_bit_out[31:0]
 @28
 (0)TOP.camera_interface.wide_bit_out[31:0]
@@ -73,7 +75,20 @@ TOP.camera_interface.wide_bit_out[31:0]
 (29)TOP.camera_interface.wide_bit_out[31:0]
 (30)TOP.camera_interface.wide_bit_out[31:0]
 (31)TOP.camera_interface.wide_bit_out[31:0]
-@1401201
+@1401200
 -group_end
+@28
+TOP.camera_interface.shutter
+TOP.camera_interface.shutter_raw
+TOP.camera_interface.uut8.slow_clk_en
+TOP.camera_interface.uut8.clk
+TOP.camera_interface.uut8.d0.D
+TOP.camera_interface.uut8.Q0
+TOP.camera_interface.uut8.Q1
+TOP.camera_interface.uut8.Q2
+TOP.camera_interface.uut8.Q2_bar
+TOP.camera_interface.uut8.pb_out
+@29
+TOP.camera_interface.shutter
 [pattern_trace] 1
 [pattern_trace] 0

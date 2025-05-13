@@ -23,8 +23,7 @@ int main() {
     dut->d = 0;
     dut->href = 0;
     dut->vsync = 0;
-    dut->shutter = 1;
-    dut->empty = 0;
+    dut->shutter_raw = 0;
 
     int cycle = 0;
     auto toggle_pclk = [&](int clk_count) {
@@ -42,9 +41,9 @@ int main() {
     };
 
     // Trigger shutter for 1 falling edge
-    dut->shutter = 0;
-    toggle_pclk(1 );
-    dut->shutter = 1;
+    dut->shutter_raw = 1;
+    toggle_pclk(15);
+    dut->shutter_raw = 0;
 
     // VSYNC high for 3 t_LINE = 3 * 784 * 2 = 4704 pclk (triggered by falling edge of pclk)
     // Set vsync high on the falling edge of pclk
