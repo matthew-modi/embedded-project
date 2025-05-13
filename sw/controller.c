@@ -82,6 +82,8 @@ int configure_sccb(void) {
                         ov7670_init[i].reg, ov7670_init[i].val, val);
                 close(fd);
                 return -1;
+            } else {
+                printf("Register 0x%02X set to 0x%02X\n", ov7670_init[i].reg, val);
             }
         } else {
             fprintf(stderr, "Error! Readback of register 0x%02X\n", ov7670_init[i].reg);
