@@ -73,7 +73,13 @@ int configure_sccb(void) {
             close(fd);
             return -1;
         }
-        
+
+        // skip read-back for the reset
+        if (ov7670_init[i].reg == 0x12 && ov7670_init[i].val == 0x80) {
+            usleep(50000); // let the sensor finish resetting (50 ms)
+            continue;
+        }
+  
         // Read back to verify
         uint8_t val;
         if (read_reg(fd, ov7670_init[i].reg, &val) == 0) {
