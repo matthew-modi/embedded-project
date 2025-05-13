@@ -10,17 +10,9 @@
 #include <linux/i2c-dev.h>
 #include <stdlib.h>
 #include <errno.h>
-#include <linux/gpio.h>
 
-#define I2C_BUS        "/dev/i2c-0"
+#define I2C_BUS        "/dev/i2c-1"
 #define SCCB_ADDR      0x21        // OV7670 7-bit (0x42>>1)
-
-// HPS GPIO1 /dev/mem mappings
-#define GPIO1_BASE     0xFF709000UL
-#define GPIO1_SPAN     0x00001000UL
-#define DR_OFFSET      0x00        // Data Register
-#define DDR_OFFSET     0x14        // Data Direction Register
-#define I2C_CTRL_BIT   (1 << 19)   // GPIO48 = HPS_I2C_CONTROL
 
 // Simple write byte via raw I2C
 static int write_reg(int fd, uint8_t reg, uint8_t val) {
@@ -68,40 +60,7 @@ static const struct regval ov7670_init[] = {
     {0xFF,0xFF}   // end
 };
 
-static int switch_i2c_mux_to_hps(void) {
-    int mem_fd = open("/dev/mem", O_RDWR | O_SYNC);
-    if (mem_fd < 0) {
-        perror("open /dev/mem");
-        return -1;
-    }
-    void *base = mmap(NULL, GPIO1_SPAN,
-                      PROT_READ|PROT_WRITE, MAP_SHARED,
-                      mem_fd, GPIO1_BASE);
-    if (base == MAP_FAILED) {
-        perror("mmap");
-        close(mem_fd);
-        return -1;
-    }
-
-    volatile uint32_t *dr  = (uint32_t *)(base + DR_OFFSET);
-    volatile uint32_t *ddr = (uint32_t *)(base + DDR_OFFSET);
-
-    // set GPIO48 as output
-    *ddr |= I2C_CTRL_BIT;
-    // drive GPIO48 high
-    *dr  |= I2C_CTRL_BIT;
-
-    munmap(base, GPIO1_SPAN);
-    close(mem_fd);
-    return 0;
-}
-
 int configure_sccb(void) {
-    if (switch_i2c_mux_to_hps() < 0) {
-        fprintf(stderr, "Failed to switch I2C mux\n");
-        return -1;
-    }
-
     int fd = open(I2C_BUS, O_RDWR);
     if (fd < 0) {
         perror("open I2C_BUS");
