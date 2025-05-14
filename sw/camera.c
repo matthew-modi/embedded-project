@@ -34,14 +34,14 @@ static long camera_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
     switch (cmd) {
     case CAMERA_READ_WORD: {
-        uint32_t word = ioread32(dev.scanline_base);
-        if (copy_to_user((uint32_t *)arg, &word, sizeof(uint32_t)))
+        u32 word = ioread32(dev.scanline_base);
+        if (copy_to_user((u32 *)arg, &word, sizeof(u32)))
             return -EFAULT;
         break;
     }
 
     case CAMERA_FIFO_EMPTY: {
-        uint32_t status = ioread32(dev.fifo_empty_base);
+        u32 status = ioread32(dev.fifo_empty_base);
         int empty = (status >> 1) & 0x1;  // Bit 1 is EMPTY flag
         if (copy_to_user((int *)arg, &empty, sizeof(int)))
             return -EFAULT;
