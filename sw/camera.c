@@ -10,9 +10,17 @@
 #include <linux/uaccess.h>
 #include "camera.h"
 
+// Define locally if not using HAL includes
+#define ALTERA_AVALON_FIFO_DATA_REG           0
+#define ALTERA_AVALON_FIFO_STATUS_REG         1
+#define ALTERA_AVALON_FIFO_STATUS_EMPTY_MASK  (1 << 1)
+
+#define SCANLINE_OFFSET      (ALTERA_AVALON_FIFO_DATA_REG * 4)
+#define FIFO_EMPTY_OFFSET    (ALTERA_AVALON_FIFO_STATUS_REG * 4)
 #define DRIVER_NAME "camera"
-#define SCANLINE_OFFSET       0x100  // FIFO base
-#define FIFO_EMPTY_OFFSET     0x204  // FIFO empty flag location (1 byte)
+
+// #define SCANLINE_OFFSET       0x000  // FIFO read port 
+// #define FIFO_EMPTY_OFFSET     0x004  // FIFO istatus
 
 struct camera_dev {
     struct resource res;
@@ -32,8 +40,8 @@ static long camera_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
     }
 
     case CAMERA_FIFO_EMPTY: {
-        uint8_t flag = ioread8(dev.fifo_empty_base);
-        int empty = (flag != 0);
+        uint32_t status = ioread32(dev.fifo_empty_base);
+        int empty = (status >> 1) & 0x1;  // Bit 1 is EMPTY flag
         if (copy_to_user((int *)arg, &empty, sizeof(int)))
             return -EFAULT;
         break;
