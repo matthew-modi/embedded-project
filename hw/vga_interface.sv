@@ -6,8 +6,7 @@ module vga_interface (
   input logic       clk,         // 25 MHz PLL
   input  logic        reset,       // active‐high synchronous reset
 
-  output logic      xclk,       // 25 MHz pixel clock to camera
-
+  output logic        cam_xclk,       // 25 MHz pixel clock to camera
   input  logic        cam_pclk,        // 25 MHz pixel clock from camera
   input  logic        cam_href,    // row‐valid from camera
   input  logic        cam_vsync,   // frame‐valid from camera
