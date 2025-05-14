@@ -268,18 +268,19 @@ module soc_system_top(
      .hps_hps_io_gpio_inst_GPIO54  ( HPS_KEY ),
      .hps_hps_io_gpio_inst_GPIO61  ( HPS_GSENSOR_INT ),
 
-     .c_mod_input_valid            ( GPIO_0[12] ),
-     .c_mod_input_endofpacket      ( GPIO_0[13] ),
-     .c_mod_input_startofpacket    ( GPIO_0[14] ),
-     .c_mod_input_data             ( {GPIO_0[16],
-					GPIO_0[17],
-					GPIO_0[18],
-					GPIO_0[19],
-					GPIO_0[20],
-					GPIO_0[21],
-					GPIO_0[22],
-					GPIO_0[23]})
-
+.cam_vsync ( GPIO_0[12] ),
+.cam_href  ( GPIO_0[13] ),
+.pclk  ( GPIO_0[14] ),
+.xclk  ( GPIO_0[15] ),
+.cam_data ( { GPIO_0[16],
+              GPIO_0[17],
+              GPIO_0[18],
+              GPIO_0[19],
+              GPIO_0[20],
+              GPIO_0[21],
+              GPIO_0[22],
+              GPIO_0[23] } ),
+.cam_shutter ( GPIO_0[26] )
   );
 
    // The following quiet the "no driver" warnings for output
@@ -306,9 +307,10 @@ module soc_system_top(
    assign FPGA_I2C_SCLK = SW[0];
    assign FPGA_I2C_SDAT = SW[1] ? SW[0] : 1'bZ;
 
-   assign GPIO_0[11:0] = SW[1] ? {12{SW[0]}} : {12{1'bZ}};
-   assign GPIO_0[25:12] = {14{1'bZ}};
-   assign GPIO_0[35:26] = SW[1] ? {10{SW[0]}} : {10{1'bZ}};
+assign GPIO_0[11:0]   = SW[1] ? {12{SW[0]}} : {12{1'bZ}};
+assign GPIO_0[35:27]  = SW[1] ? {9{SW[0]}} : {9{1'bZ}};
+
+   assign GPIO_1 = SW[1] ? { 36{ SW[0] } } : { 36{ 1'bZ } };   
 
    assign HEX0 = { 7{ SW[1] } };
    assign HEX1 = { 7{ SW[2] } };
@@ -328,12 +330,7 @@ module soc_system_top(
 
    assign TD_RESET_N = SW[0];
 
-   assign {VGA_R, VGA_G, VGA_B} = { 24{ SW[0] } };
-   assign {VGA_BLANK_N, VGA_CLK,
-	   VGA_HS, VGA_SYNC_N, VGA_VS} = { 5{ SW[0] } };
-
-   assign GPIO_0[24] = 0;
-   assign GPIO_0[25] = 0;
-
+assign GPIO_0[24] = 1'b1;
+assign GPIO_0[25] = 0;
 							          
 endmodule
