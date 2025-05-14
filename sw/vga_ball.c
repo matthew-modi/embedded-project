@@ -196,5 +196,5 @@ module_init(vga_ball_init);
 module_exit(vga_ball_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Stephen A. Edwards, Columbia University");
+MODULE_AUTHOR("Ananya Haritsa, Columbia University");
 MODULE_DESCRIPTION("VGA ball driver");

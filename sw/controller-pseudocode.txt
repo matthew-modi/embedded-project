@@ -1,0 +1,66 @@
+#include <stdint.h>
+#include <stdbool.h>
+
+#define B false   // initial byteflag
+
+bool shutter(void);
+bool empty(void);
+uint8_t readbyte(void);
+void process(uint8_t pixels[640][2]);
+void print_result(void);
+
+void fsm_loop(void) {
+    enum { SHUTTER, EMPTY1, BYTEFLAG, READBYTE, END_OF_ROW, EMPTY2, PROCESS } state = SHUTTER;
+    uint8_t pixels[640][2];
+    unsigned count = 0;
+    bool byteflag = B;
+
+    while (1) {
+        switch (state) {
+        case SHUTTER:
+            if (shutter()) {
+                count = 0;
+                byteflag = B;
+                state = EMPTY1;
+            }
+            break;
+
+        case EMPTY1:
+            if (empty()) {
+                // ran out of pixels early
+                state = SHUTTER;
+            } else {
+                state = BYTEFLAG;
+            }
+            break;
+
+        case BYTEFLAG:
+            state = !byteflag ? READBYTE : END_OF_ROW;
+            break;
+
+        case READBYTE:
+            pixels[count][byteflag] = readbyte();
+            count++;
+            byteflag = !byteflag;
+            state = END_OF_ROW;
+            break;
+
+        case END_OF_ROW:
+            if (count == 320)
+                state = EMPTY2;
+            else
+                state = SHUTTER;  // lost sync
+            break;
+
+        case EMPTY2:
+            state = empty() ? PROCESS : SHUTTER;
+            break;
+
+        case PROCESS:
+            process(pixels);
+            print_result();
+            state = SHUTTER;
+            break;
+        }
+    }
+}
