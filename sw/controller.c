@@ -49,9 +49,8 @@ struct regval { uint8_t reg, val; };
 static const struct regval ov7670_init[] = {
     {0x12, 0x80}, // COM7: reset sensor
 
-    {0x15, 0x40}, // COM10: map HREF→HSYNC for now...
-    {0x12, 0x04}, // COM7: select RGB output (no YUV, no Bayer) → our FPGA gets real R/G/B  
-    {0x15, 0x40}, // COM10: map HREF→HSYNC, leave PCLK/VSYNC polarity unchanged
+    {0x15, 0x00}, // COM10: map HREF→HSYNC for now...
+    {0x12, 0x04}, // COM7: select RGB output (no YUV, no Bayer) → our FPGA gets real R/G/B
     {0x40, 0xD0}, // COM15: choose RGB565 output (bits[5:4]=01) and keep full 8-bit range
     
     {0xFF, 0xFF}  // end marker
