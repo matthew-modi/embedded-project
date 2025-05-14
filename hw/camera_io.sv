@@ -7,9 +7,13 @@ module camera_io (
   input  logic [7:0]  cam_data,    // one byte of RGB565 per cycle
   input logic         switch_shutter,
 
-  output logic       fpga_href,    // row‐valid to FPGA
-  output logic       fpga_vsync,   // frame‐valid to FPGA
-  output logic [7:0] fpga_data,    // one byte of RGB565 to FPGA
-  output logic       fpga_shutter
+  output logic       href,    // row‐valid to FPGA
+  output logic       vsync,   // frame‐valid to FPGA
+  output logic [7:0] d,    // one byte of RGB565 to FPGA
+  output logic       shutter_raw
     );
+    assign shutter_raw = switch_shutter;
+    assign d = cam_data;
+    assign href = cam_href;
+    assign vsync = cam_vsync;
 endmodule
