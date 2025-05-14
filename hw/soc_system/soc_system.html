@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2025.05.14.09:48:54</td>
+    <td class="l">2025.05.14.13:02:38</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -871,13 +871,13 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">pclk_fpga&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
-       <a href="#module_camera_io_0">camera_io_0</a>
+       <a href="#module_fifo_0">fifo_0</a>
       </td>
      </tr>
      <tr>
       <td></td>
       <td></td>
-      <td class="to">&#160;&#160;clk_fake</td>
+      <td class="to">&#160;&#160;clk_in</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -887,13 +887,13 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">pclk_fpga&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
-       <a href="#module_fifo_0">fifo_0</a>
+       <a href="#module_camera_io_0">camera_io_0</a>
       </td>
      </tr>
      <tr>
       <td></td>
       <td></td>
-      <td class="to">&#160;&#160;clk_in</td>
+      <td class="to">&#160;&#160;clock</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -951,7 +951,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_camera_clk_0">camera_clk_0</a>
       </td>
       <td class="from">pclk_fpga&#160;&#160;</td>
-      <td class="main" rowspan="10">camera_interface_0</td>
+      <td class="main" rowspan="13">camera_interface_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clock_sink</td>
@@ -976,6 +976,18 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_hps_0_bridges">hps_0_bridges</a>
+      </td>
+      <td class="from">h2f_reset&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -1033,10 +1045,10 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_camera_clk_0">camera_clk_0</a>
       </td>
       <td class="from">pclk_fpga&#160;&#160;</td>
-      <td class="main" rowspan="7">camera_io_0</td>
+      <td class="main" rowspan="10">camera_io_0</td>
      </tr>
      <tr>
-      <td class="to">&#160;&#160;clk_fake</td>
+      <td class="to">&#160;&#160;clock</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -1048,7 +1060,19 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td class="from">clk_reset&#160;&#160;</td>
      </tr>
      <tr>
-      <td class="to">&#160;&#160;reset_fake</td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_hps_0_bridges">hps_0_bridges</a>
+      </td>
+      <td class="from">h2f_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
      </tr>
      <tr>
       <td></td>
@@ -20484,7 +20508,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_hps_0_clk_0">hps_0_clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-      <td class="main" rowspan="141">hps_0_bridges</td>
+      <td class="main" rowspan="150">hps_0_bridges</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset_sink</td>
@@ -21193,6 +21217,54 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;out_csr</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">h2f_reset&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_camera_interface_0">camera_interface_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">h2f_reset&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_pll_0">pll_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">h2f_reset&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_camera_io_0">camera_io_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
      </tr>
     </table>
    </div>
@@ -28857,13 +28929,25 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
-      <td class="main" rowspan="6">pll_0</td>
+      <td class="main" rowspan="9">pll_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;refclk</td>
      </tr>
      <tr>
       <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_hps_0_bridges">hps_0_bridges</a>
+      </td>
+      <td class="from">h2f_reset&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -30800,7 +30884,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   <table class="blueBar">
    <tr>
     <td class="l">generation took 0.02 seconds</td>
-    <td class="r">rendering took 0.44 seconds</td>
+    <td class="r">rendering took 0.31 seconds</td>
    </tr>
   </table>
  </body>

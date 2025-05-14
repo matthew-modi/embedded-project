@@ -82,7 +82,7 @@ module soc_system (
 	wire         camera_interface_0_camera_interface_fifo_st_valid; // camera_interface_0:fifo_enable -> fifo_0:avalonst_sink_valid
 	wire  [31:0] camera_interface_0_camera_interface_fifo_st_data;  // camera_interface_0:wide_bit_out -> fifo_0:avalonst_sink_data
 	wire         pll_0_outclk0_clk;                                 // pll_0:outclk_0 -> camera_clk_0:clk
-	wire         camera_clk_0_pclk_fpga_clk;                        // camera_clk_0:fpga_pclk -> [camera_interface_0:pclk, camera_io_0:clk, fifo_0:wrclock, rst_controller:clk]
+	wire         camera_clk_0_pclk_fpga_clk;                        // camera_clk_0:fpga_pclk -> [camera_interface_0:pclk, camera_io_0:clk, fifo_0:wrclock, rst_controller:clk, rst_controller_001:clk]
 	wire   [7:0] camera_io_0_camera_data_d;                         // camera_io_0:d -> camera_interface_0:d
 	wire         camera_io_0_camera_data_vsync;                     // camera_io_0:vsync -> camera_interface_0:vsync
 	wire         camera_io_0_camera_data_shutter_raw;               // camera_io_0:shutter_raw -> camera_interface_0:shutter_raw
@@ -167,12 +167,14 @@ module soc_system (
 	wire         mm_interconnect_1_fifo_0_out_csr_read;             // mm_interconnect_1:fifo_0_out_csr_read -> fifo_0:rdclk_control_slave_read
 	wire         mm_interconnect_1_fifo_0_out_csr_write;            // mm_interconnect_1:fifo_0_out_csr_write -> fifo_0:rdclk_control_slave_write
 	wire  [31:0] mm_interconnect_1_fifo_0_out_csr_writedata;        // mm_interconnect_1:fifo_0_out_csr_writedata -> fifo_0:rdclk_control_slave_writedata
-	wire         rst_controller_reset_out_reset;                    // rst_controller:reset_out -> [camera_interface_0:reset, camera_io_0:reset, fifo_0:wrreset_n]
-	wire         rst_controller_001_reset_out_reset;                // rst_controller_001:reset_out -> [fifo_0:rdreset_n, mm_interconnect_0:fifo_0_reset_out_reset_bridge_in_reset_reset, mm_interconnect_1:fifo_0_reset_out_reset_bridge_in_reset_reset]
-	wire         rst_controller_002_reset_out_reset;                // rst_controller_002:reset_out -> [mm_interconnect_0:hps_0_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_1:hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset]
-	wire         hps_0_h2f_reset_reset;                             // hps_0:h2f_rst_n -> rst_controller_002:reset_in0
+	wire         rst_controller_reset_out_reset;                    // rst_controller:reset_out -> [camera_interface_0:reset, camera_io_0:reset]
+	wire         hps_0_h2f_reset_reset;                             // hps_0:h2f_rst_n -> [rst_controller:reset_in1, rst_controller_003:reset_in1, rst_controller_004:reset_in0]
+	wire         rst_controller_001_reset_out_reset;                // rst_controller_001:reset_out -> fifo_0:wrreset_n
+	wire         rst_controller_002_reset_out_reset;                // rst_controller_002:reset_out -> [fifo_0:rdreset_n, mm_interconnect_0:fifo_0_reset_out_reset_bridge_in_reset_reset, mm_interconnect_1:fifo_0_reset_out_reset_bridge_in_reset_reset]
+	wire         rst_controller_003_reset_out_reset;                // rst_controller_003:reset_out -> pll_0:rst
+	wire         rst_controller_004_reset_out_reset;                // rst_controller_004:reset_out -> [mm_interconnect_0:hps_0_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_1:hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset]
 
-	camera_io camera_clk_0 (
+	camera_clk camera_clk_0 (
 		.clk       (pll_0_outclk0_clk),          // clock_input.clk
 		.cam_pclk  (pclk_io_clk),                //     pclk_io.clk
 		.fpga_pclk (camera_clk_0_pclk_fpga_clk), //   pclk_fpga.clk
@@ -191,23 +193,23 @@ module soc_system (
 	);
 
 	camera_io camera_io_0 (
+		.clk            (camera_clk_0_pclk_fpga_clk),          //       clock.clk
+		.reset          (rst_controller_reset_out_reset),      //       reset.reset
+		.href           (camera_io_0_camera_data_href),        // camera_data.href
+		.vsync          (camera_io_0_camera_data_vsync),       //            .vsync
+		.d              (camera_io_0_camera_data_d),           //            .d
+		.shutter_raw    (camera_io_0_camera_data_shutter_raw), //            .shutter_raw
 		.cam_data       (camera_io_cam_data),                  //   camera_io.cam_data
 		.cam_href       (camera_io_cam_href),                  //            .cam_href
 		.cam_vsync      (camera_io_cam_vsync),                 //            .cam_vsync
-		.switch_shutter (camera_io_switch_shutter),            //            .switch_shutter
-		.d              (camera_io_0_camera_data_d),           // camera_data.d
-		.href           (camera_io_0_camera_data_href),        //            .href
-		.shutter_raw    (camera_io_0_camera_data_shutter_raw), //            .shutter_raw
-		.vsync          (camera_io_0_camera_data_vsync),       //            .vsync
-		.reset          (rst_controller_reset_out_reset),      //  reset_fake.reset
-		.clk            (camera_clk_0_pclk_fpga_clk)           //    clk_fake.clk
+		.switch_shutter (camera_io_switch_shutter)             //            .switch_shutter
 	);
 
 	soc_system_fifo_0 fifo_0 (
 		.wrclock                       (camera_clk_0_pclk_fpga_clk),                        //    clk_in.clk
-		.wrreset_n                     (~rst_controller_reset_out_reset),                   //  reset_in.reset_n
+		.wrreset_n                     (~rst_controller_001_reset_out_reset),               //  reset_in.reset_n
 		.rdclock                       (clk_clk),                                           //   clk_out.clk
-		.rdreset_n                     (~rst_controller_001_reset_out_reset),               // reset_out.reset_n
+		.rdreset_n                     (~rst_controller_002_reset_out_reset),               // reset_out.reset_n
 		.avalonst_sink_valid           (camera_interface_0_camera_interface_fifo_st_valid), //        in.valid
 		.avalonst_sink_data            (camera_interface_0_camera_interface_fifo_st_data),  //          .data
 		.avalonmm_read_slave_readdata  (mm_interconnect_0_fifo_0_out_readdata),             //       out.readdata
@@ -407,10 +409,10 @@ module soc_system (
 	);
 
 	soc_system_pll_0 pll_0 (
-		.refclk   (clk_clk),           //  refclk.clk
-		.rst      (~reset_reset_n),    //   reset.reset
-		.outclk_0 (pll_0_outclk0_clk), // outclk0.clk
-		.locked   ()                   // (terminated)
+		.refclk   (clk_clk),                            //  refclk.clk
+		.rst      (rst_controller_003_reset_out_reset), //   reset.reset
+		.outclk_0 (pll_0_outclk0_clk),                  // outclk0.clk
+		.locked   ()                                    // (terminated)
 	);
 
 	soc_system_mm_interconnect_0 mm_interconnect_0 (
@@ -451,8 +453,8 @@ module soc_system (
 		.hps_0_h2f_axi_master_rvalid                                      (hps_0_h2f_axi_master_rvalid),           //                                                           .rvalid
 		.hps_0_h2f_axi_master_rready                                      (hps_0_h2f_axi_master_rready),           //                                                           .rready
 		.clk_0_clk_clk                                                    (clk_clk),                               //                                                  clk_0_clk.clk
-		.fifo_0_reset_out_reset_bridge_in_reset_reset                     (rst_controller_001_reset_out_reset),    //                     fifo_0_reset_out_reset_bridge_in_reset.reset
-		.hps_0_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset (rst_controller_002_reset_out_reset),    // hps_0_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
+		.fifo_0_reset_out_reset_bridge_in_reset_reset                     (rst_controller_002_reset_out_reset),    //                     fifo_0_reset_out_reset_bridge_in_reset.reset
+		.hps_0_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset (rst_controller_004_reset_out_reset),    // hps_0_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
 		.fifo_0_out_address                                               (mm_interconnect_0_fifo_0_out_address),  //                                                 fifo_0_out.address
 		.fifo_0_out_read                                                  (mm_interconnect_0_fifo_0_out_read),     //                                                           .read
 		.fifo_0_out_readdata                                              (mm_interconnect_0_fifo_0_out_readdata)  //                                                           .readdata
@@ -496,8 +498,8 @@ module soc_system (
 		.hps_0_h2f_lw_axi_master_rvalid                                      (hps_0_h2f_lw_axi_master_rvalid),             //                                                              .rvalid
 		.hps_0_h2f_lw_axi_master_rready                                      (hps_0_h2f_lw_axi_master_rready),             //                                                              .rready
 		.clk_0_clk_clk                                                       (clk_clk),                                    //                                                     clk_0_clk.clk
-		.fifo_0_reset_out_reset_bridge_in_reset_reset                        (rst_controller_001_reset_out_reset),         //                        fifo_0_reset_out_reset_bridge_in_reset.reset
-		.hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset (rst_controller_002_reset_out_reset),         // hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
+		.fifo_0_reset_out_reset_bridge_in_reset_reset                        (rst_controller_002_reset_out_reset),         //                        fifo_0_reset_out_reset_bridge_in_reset.reset
+		.hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset (rst_controller_004_reset_out_reset),         // hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
 		.fifo_0_out_csr_address                                              (mm_interconnect_1_fifo_0_out_csr_address),   //                                                fifo_0_out_csr.address
 		.fifo_0_out_csr_write                                                (mm_interconnect_1_fifo_0_out_csr_write),     //                                                              .write
 		.fifo_0_out_csr_read                                                 (mm_interconnect_1_fifo_0_out_csr_read),      //                                                              .read
@@ -506,7 +508,7 @@ module soc_system (
 	);
 
 	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (1),
+		.NUM_RESET_INPUTS          (2),
 		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
 		.SYNC_DEPTH                (2),
 		.RESET_REQUEST_PRESENT     (0),
@@ -532,11 +534,11 @@ module soc_system (
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller (
 		.reset_in0      (~reset_reset_n),                 // reset_in0.reset
+		.reset_in1      (~hps_0_h2f_reset_reset),         // reset_in1.reset
 		.clk            (camera_clk_0_pclk_fpga_clk),     //       clk.clk
 		.reset_out      (rst_controller_reset_out_reset), // reset_out.reset
 		.reset_req      (),                               // (terminated)
 		.reset_req_in0  (1'b0),                           // (terminated)
-		.reset_in1      (1'b0),                           // (terminated)
 		.reset_req_in1  (1'b0),                           // (terminated)
 		.reset_in2      (1'b0),                           // (terminated)
 		.reset_req_in2  (1'b0),                           // (terminated)
@@ -595,7 +597,7 @@ module soc_system (
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_001 (
 		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
-		.clk            (clk_clk),                            //       clk.clk
+		.clk            (camera_clk_0_pclk_fpga_clk),         //       clk.clk
 		.reset_out      (rst_controller_001_reset_out_reset), // reset_out.reset
 		.reset_req      (),                                   // (terminated)
 		.reset_req_in0  (1'b0),                               // (terminated)
@@ -657,9 +659,135 @@ module soc_system (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_002 (
-		.reset_in0      (~hps_0_h2f_reset_reset),             // reset_in0.reset
+		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
 		.clk            (clk_clk),                            //       clk.clk
 		.reset_out      (rst_controller_002_reset_out_reset), // reset_out.reset
+		.reset_req      (),                                   // (terminated)
+		.reset_req_in0  (1'b0),                               // (terminated)
+		.reset_in1      (1'b0),                               // (terminated)
+		.reset_req_in1  (1'b0),                               // (terminated)
+		.reset_in2      (1'b0),                               // (terminated)
+		.reset_req_in2  (1'b0),                               // (terminated)
+		.reset_in3      (1'b0),                               // (terminated)
+		.reset_req_in3  (1'b0),                               // (terminated)
+		.reset_in4      (1'b0),                               // (terminated)
+		.reset_req_in4  (1'b0),                               // (terminated)
+		.reset_in5      (1'b0),                               // (terminated)
+		.reset_req_in5  (1'b0),                               // (terminated)
+		.reset_in6      (1'b0),                               // (terminated)
+		.reset_req_in6  (1'b0),                               // (terminated)
+		.reset_in7      (1'b0),                               // (terminated)
+		.reset_req_in7  (1'b0),                               // (terminated)
+		.reset_in8      (1'b0),                               // (terminated)
+		.reset_req_in8  (1'b0),                               // (terminated)
+		.reset_in9      (1'b0),                               // (terminated)
+		.reset_req_in9  (1'b0),                               // (terminated)
+		.reset_in10     (1'b0),                               // (terminated)
+		.reset_req_in10 (1'b0),                               // (terminated)
+		.reset_in11     (1'b0),                               // (terminated)
+		.reset_req_in11 (1'b0),                               // (terminated)
+		.reset_in12     (1'b0),                               // (terminated)
+		.reset_req_in12 (1'b0),                               // (terminated)
+		.reset_in13     (1'b0),                               // (terminated)
+		.reset_req_in13 (1'b0),                               // (terminated)
+		.reset_in14     (1'b0),                               // (terminated)
+		.reset_req_in14 (1'b0),                               // (terminated)
+		.reset_in15     (1'b0),                               // (terminated)
+		.reset_req_in15 (1'b0)                                // (terminated)
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (2),
+		.OUTPUT_RESET_SYNC_EDGES   ("none"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_003 (
+		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
+		.reset_in1      (~hps_0_h2f_reset_reset),             // reset_in1.reset
+		.clk            (),                                   //       clk.clk
+		.reset_out      (rst_controller_003_reset_out_reset), // reset_out.reset
+		.reset_req      (),                                   // (terminated)
+		.reset_req_in0  (1'b0),                               // (terminated)
+		.reset_req_in1  (1'b0),                               // (terminated)
+		.reset_in2      (1'b0),                               // (terminated)
+		.reset_req_in2  (1'b0),                               // (terminated)
+		.reset_in3      (1'b0),                               // (terminated)
+		.reset_req_in3  (1'b0),                               // (terminated)
+		.reset_in4      (1'b0),                               // (terminated)
+		.reset_req_in4  (1'b0),                               // (terminated)
+		.reset_in5      (1'b0),                               // (terminated)
+		.reset_req_in5  (1'b0),                               // (terminated)
+		.reset_in6      (1'b0),                               // (terminated)
+		.reset_req_in6  (1'b0),                               // (terminated)
+		.reset_in7      (1'b0),                               // (terminated)
+		.reset_req_in7  (1'b0),                               // (terminated)
+		.reset_in8      (1'b0),                               // (terminated)
+		.reset_req_in8  (1'b0),                               // (terminated)
+		.reset_in9      (1'b0),                               // (terminated)
+		.reset_req_in9  (1'b0),                               // (terminated)
+		.reset_in10     (1'b0),                               // (terminated)
+		.reset_req_in10 (1'b0),                               // (terminated)
+		.reset_in11     (1'b0),                               // (terminated)
+		.reset_req_in11 (1'b0),                               // (terminated)
+		.reset_in12     (1'b0),                               // (terminated)
+		.reset_req_in12 (1'b0),                               // (terminated)
+		.reset_in13     (1'b0),                               // (terminated)
+		.reset_req_in13 (1'b0),                               // (terminated)
+		.reset_in14     (1'b0),                               // (terminated)
+		.reset_req_in14 (1'b0),                               // (terminated)
+		.reset_in15     (1'b0),                               // (terminated)
+		.reset_req_in15 (1'b0)                                // (terminated)
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (1),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_004 (
+		.reset_in0      (~hps_0_h2f_reset_reset),             // reset_in0.reset
+		.clk            (clk_clk),                            //       clk.clk
+		.reset_out      (rst_controller_004_reset_out_reset), // reset_out.reset
 		.reset_req      (),                                   // (terminated)
 		.reset_req_in0  (1'b0),                               // (terminated)
 		.reset_in1      (1'b0),                               // (terminated)

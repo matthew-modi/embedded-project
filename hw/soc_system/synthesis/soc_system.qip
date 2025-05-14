@@ -2,7 +2,7 @@ set_global_assignment -entity "soc_system" -library "soc_system" -name IP_TOOL_N
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_TOOL_VERSION "21.1"
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "soc_system" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../soc_system.sopcinfo"]
-set_global_assignment -entity "soc_system" -library "soc_system" -name SLD_INFO "QSYS_NAME soc_system HAS_SOPCINFO 1 GENERATION_ID 1747230526"
+set_global_assignment -entity "soc_system" -library "soc_system" -name SLD_INFO "QSYS_NAME soc_system HAS_SOPCINFO 1 GENERATION_ID 1747242152"
 set_global_assignment -library "soc_system" -name MISC_FILE [file join $::quartus(qip_path) "../soc_system.cmp"]
 set_global_assignment -library "soc_system" -name SLD_FILE [file join $::quartus(qip_path) "soc_system.regmap"]
 set_global_assignment -library "soc_system" -name MISC_FILE [file join $::quartus(qip_path) "soc_system_hps_0_hps.svd"]
@@ -17,7 +17,7 @@ set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPON
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTc0NzIzMDUyNg==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTc0NzI0MjE1Mg==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBW::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::NUNTRU1BNUYzMUM2::QXV0byBERVZJQ0U="
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Ng==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
@@ -34,7 +34,7 @@ set_global_assignment -entity "altera_reset_controller" -library "soc_system" -n
 set_global_assignment -entity "altera_reset_controller" -library "soc_system" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
 set_global_assignment -entity "altera_reset_controller" -library "soc_system" -name IP_COMPONENT_VERSION "MjEuMQ=="
 set_global_assignment -entity "altera_reset_controller" -library "soc_system" -name IP_COMPONENT_DESCRIPTION "Rm9yIHN5c3RlbXMgd2l0aCBtdWx0aXBsZSByZXNldCBpbnB1dHMsIHRoZSBNZXJsaW4gUmVzZXQgQ29udHJvbGxlciBPUnMgYWxsIHJlc2V0IGlucHV0cyBhbmQgZ2VuZXJhdGVzIGEgc2luZ2xlIHJlc2V0IG91dHB1dC4="
-set_global_assignment -entity "altera_reset_controller" -library "soc_system" -name IP_COMPONENT_PARAMETER "TlVNX1JFU0VUX0lOUFVUUw==::MQ==::TnVtYmVyIG9mIGlucHV0cw=="
+set_global_assignment -entity "altera_reset_controller" -library "soc_system" -name IP_COMPONENT_PARAMETER "TlVNX1JFU0VUX0lOUFVUUw==::Mg==::TnVtYmVyIG9mIGlucHV0cw=="
 set_global_assignment -entity "altera_reset_controller" -library "soc_system" -name IP_COMPONENT_PARAMETER "T1VUUFVUX1JFU0VUX1NZTkNfRURHRVM=::ZGVhc3NlcnQ=::T3V0cHV0IFJlc2V0IFN5bmNocm9ub3VzIEVkZ2Vz"
 set_global_assignment -entity "altera_reset_controller" -library "soc_system" -name IP_COMPONENT_PARAMETER "U1lOQ19ERVBUSA==::Mg==::U3luY2hyb25pemVyIGRlcHRo"
 set_global_assignment -entity "altera_reset_controller" -library "soc_system" -name IP_COMPONENT_PARAMETER "UkVTRVRfUkVRVUVTVF9QUkVTRU5U::MA==::UmVzZXQgcmVxdWVzdCBsb2dpYyBlbmFibGU="
@@ -6757,16 +6757,21 @@ set_global_assignment -entity "soc_system_fifo_0" -library "soc_system" -name IP
 set_global_assignment -entity "soc_system_fifo_0" -library "soc_system" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF91c2VfYXZhbG9uTU1fcmRfc2xhdmU=::dHJ1ZQ==::ZGVyaXZlZF91c2VfYXZhbG9uTU1fcmRfc2xhdmU="
 set_global_assignment -entity "soc_system_fifo_0" -library "soc_system" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF91c2VfYXZhbG9uU1Rfc291cmNl::ZmFsc2U=::ZGVyaXZlZF91c2VfYXZhbG9uU1Rfc291cmNl"
 set_global_assignment -entity "soc_system_fifo_0" -library "soc_system" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9zaW5rX3NvdXJjZV9hdmFsb25TVF93aWR0aA==::MzI=::ZGVyaXZlZF9zaW5rX3NvdXJjZV9hdmFsb25TVF93aWR0aA=="
+set_global_assignment -entity "camera_io" -library "soc_system" -name IP_COMPONENT_NAME "Y2FtZXJhX2lv"
+set_global_assignment -entity "camera_io" -library "soc_system" -name IP_COMPONENT_DISPLAY_NAME "Q0FNRVJBX0lP"
+set_global_assignment -entity "camera_io" -library "soc_system" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "camera_io" -library "soc_system" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "camera_io" -library "soc_system" -name IP_COMPONENT_VERSION "MS4w"
 set_global_assignment -entity "camera_interface" -library "soc_system" -name IP_COMPONENT_NAME "Y2FtZXJhX2ludGVyZmFjZQ=="
 set_global_assignment -entity "camera_interface" -library "soc_system" -name IP_COMPONENT_DISPLAY_NAME "Q0FNRVJBX0lOVEVSRkFDRQ=="
 set_global_assignment -entity "camera_interface" -library "soc_system" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
 set_global_assignment -entity "camera_interface" -library "soc_system" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "camera_interface" -library "soc_system" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "camera_io" -library "soc_system" -name IP_COMPONENT_NAME "Y2FtZXJhX2lv"
-set_global_assignment -entity "camera_io" -library "soc_system" -name IP_COMPONENT_DISPLAY_NAME "Q0FNRVJBX0NMSw=="
-set_global_assignment -entity "camera_io" -library "soc_system" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "camera_io" -library "soc_system" -name IP_COMPONENT_INTERNAL "Off"
-set_global_assignment -entity "camera_io" -library "soc_system" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "camera_clk" -library "soc_system" -name IP_COMPONENT_NAME "Y2FtZXJhX2Nsaw=="
+set_global_assignment -entity "camera_clk" -library "soc_system" -name IP_COMPONENT_DISPLAY_NAME "Q0FNRVJBX0NMSw=="
+set_global_assignment -entity "camera_clk" -library "soc_system" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "camera_clk" -library "soc_system" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "camera_clk" -library "soc_system" -name IP_COMPONENT_VERSION "MS4w"
 
 set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::quartus(qip_path) "soc_system.v"]
 set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.v"]
@@ -6870,6 +6875,7 @@ set_global_assignment -library "soc_system" -name SYSTEMVERILOG_FILE [file join 
 set_global_assignment -library "soc_system" -name SDC_FILE [file join $::quartus(qip_path) "submodules/soc_system_hps_0_fpga_interfaces.sdc"]
 set_global_assignment -library "soc_system" -name SDC_FILE [file join $::quartus(qip_path) "submodules/soc_system_fifo_0.sdc"]
 set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/soc_system_fifo_0.v"]
+set_global_assignment -library "soc_system" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/camera_io.sv"]
 set_global_assignment -library "soc_system" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/camera_interface.sv"]
 set_global_assignment -library "soc_system" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/debounce_better_version.sv"]
 set_global_assignment -library "soc_system" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/flipflip.sv"]

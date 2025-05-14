@@ -1,5 +1,5 @@
 Info: Starting: Create block symbol file (.bsf)
-Info: qsys-generate /homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/soc_system.qsys --block-symbol-file --output-directory=/homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/soc_system --family="Cyclone V" --part=5CSEMA5F31C6
+Info: qsys-generate /homes/user/stud/fall23/hab2175/Documents/EmbeddedSystems/embedded-project/hw/soc_system.qsys --block-symbol-file --output-directory=/homes/user/stud/fall23/hab2175/Documents/EmbeddedSystems/embedded-project/hw/soc_system --family="Cyclone V" --part=5CSEMA5F31C6
 Progress: Loading hw/soc_system.qsys
 Progress: Reading input file
 Progress: Adding camera_clk_0 [camera_clk 1.0]
@@ -29,7 +29,7 @@ Info: qsys-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
 Info: Starting: Create HDL design files for synthesis
-Info: qsys-generate /homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/soc_system.qsys --synthesis=VERILOG --output-directory=/homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/soc_system/synthesis --family="Cyclone V" --part=5CSEMA5F31C6
+Info: qsys-generate /homes/user/stud/fall23/hab2175/Documents/EmbeddedSystems/embedded-project/hw/soc_system.qsys --synthesis=VERILOG --output-directory=/homes/user/stud/fall23/hab2175/Documents/EmbeddedSystems/embedded-project/hw/soc_system/synthesis --family="Cyclone V" --part=5CSEMA5F31C6
 Progress: Loading hw/soc_system.qsys
 Progress: Reading input file
 Progress: Adding camera_clk_0 [camera_clk 1.0]
@@ -60,8 +60,9 @@ Info: Interconnect is inserted between master hps_0.h2f_axi_master and slave fif
 Info: Interconnect is inserted between master hps_0.h2f_lw_axi_master and slave fifo_0.out_csr because the master is of type axi and the slave is of type avalon.
 Info: camera_clk_0: "soc_system" instantiated camera_clk "camera_clk_0"
 Info: camera_interface_0: "soc_system" instantiated camera_interface "camera_interface_0"
+Info: camera_io_0: "soc_system" instantiated camera_io "camera_io_0"
 Info: fifo_0: Starting RTL generation for module 'soc_system_fifo_0'
-Info: fifo_0:   Generation command is [exec /tools/intel/intelFPGA/21.1/quartus/linux64/perl/bin/perl -I /tools/intel/intelFPGA/21.1/quartus/linux64/perl/lib -I /tools/intel/intelFPGA/21.1/quartus/sopc_builder/bin/europa -I /tools/intel/intelFPGA/21.1/quartus/sopc_builder/bin -I /tools/intel/intelFPGA/21.1/quartus/../ip/altera/sopc_builder_ip/common -I /tools/intel/intelFPGA/21.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo -- /tools/intel/intelFPGA/21.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo/generate_rtl.pl --name=soc_system_fifo_0 --dir=/tmp/alt0222_1920848338229390792.dir/0004_fifo_0_gen/ --quartus_dir=/tools/intel/intelFPGA/21.1/quartus --verilog --config=/tmp/alt0222_1920848338229390792.dir/0004_fifo_0_gen//soc_system_fifo_0_component_configuration.pl  --do_build_sim=0  ]
+Info: fifo_0:   Generation command is [exec /tools/intel/intelFPGA/21.1/quartus/linux64/perl/bin/perl -I /tools/intel/intelFPGA/21.1/quartus/linux64/perl/lib -I /tools/intel/intelFPGA/21.1/quartus/sopc_builder/bin/europa -I /tools/intel/intelFPGA/21.1/quartus/sopc_builder/bin -I /tools/intel/intelFPGA/21.1/quartus/../ip/altera/sopc_builder_ip/common -I /tools/intel/intelFPGA/21.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo -- /tools/intel/intelFPGA/21.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo/generate_rtl.pl --name=soc_system_fifo_0 --dir=/tmp/alt0222_7824245137074741018.dir/0005_fifo_0_gen/ --quartus_dir=/tools/intel/intelFPGA/21.1/quartus --verilog --config=/tmp/alt0222_7824245137074741018.dir/0005_fifo_0_gen//soc_system_fifo_0_component_configuration.pl  --do_build_sim=0  ]
 Info: fifo_0: Done RTL generation for module 'soc_system_fifo_0'
 Info: fifo_0: "soc_system" instantiated altera_avalon_fifo "fifo_0"
 Info: hps_0: "Running  for module: hps_0"
@@ -83,26 +84,26 @@ Info: fifo_0_out_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_
 Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
 Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
 Info: fifo_0_out_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "fifo_0_out_burst_adapter"
-Info: Reusing file /homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/soc_system/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file /homes/user/stud/fall23/hab2175/Documents/EmbeddedSystems/embedded-project/hw/soc_system/synthesis/submodules/altera_merlin_address_alignment.sv
 Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
 Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
 Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
-Info: Reusing file /homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file /homes/user/stud/fall23/hab2175/Documents/EmbeddedSystems/embedded-project/hw/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: fifo_0_out_rsp_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "fifo_0_out_rsp_width_adapter"
-Info: Reusing file /homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/soc_system/synthesis/submodules/altera_merlin_address_alignment.sv
-Info: Reusing file /homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/soc_system/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: Reusing file /homes/user/stud/fall23/hab2175/Documents/EmbeddedSystems/embedded-project/hw/soc_system/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file /homes/user/stud/fall23/hab2175/Documents/EmbeddedSystems/embedded-project/hw/soc_system/synthesis/submodules/altera_merlin_burst_uncompressor.sv
 Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
 Info: router: "mm_interconnect_1" instantiated altera_merlin_router "router"
 Info: router_002: "mm_interconnect_1" instantiated altera_merlin_router "router_002"
 Info: cmd_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "cmd_demux"
 Info: cmd_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_mux"
-Info: Reusing file /homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file /homes/user/stud/fall23/hab2175/Documents/EmbeddedSystems/embedded-project/hw/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: rsp_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_demux"
 Info: rsp_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "rsp_mux"
-Info: Reusing file /homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file /homes/user/stud/fall23/hab2175/Documents/EmbeddedSystems/embedded-project/hw/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: border: "hps_io" instantiated altera_interface_generator "border"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
-Info: soc_system: Done "soc_system" with 32 modules, 95 files
+Info: soc_system: Done "soc_system" with 33 modules, 96 files
 Info: qsys-generate succeeded.
 Info: Finished: Create HDL design files for synthesis

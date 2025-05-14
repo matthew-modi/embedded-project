@@ -1,0 +1,76 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst soc_system.hps_0.uart0 -pg 1
+preplace inst soc_system.hps_0.gmac0 -pg 1
+preplace inst soc_system.hps_0.uart1 -pg 1
+preplace inst soc_system.hps_0.clkmgr -pg 1
+preplace inst soc_system.hps_0.axi_ocram -pg 1
+preplace inst soc_system.hps_0.sdrctl -pg 1
+preplace inst soc_system.hps_0.gmac1 -pg 1
+preplace inst soc_system.hps_0.qspi -pg 1
+preplace inst soc_system.hps_0.sysmgr -pg 1
+preplace inst soc_system.hps_0.l3regs -pg 1
+preplace inst soc_system.hps_0.usb0 -pg 1
+preplace inst soc_system.hps_0.i2c0 -pg 1
+preplace inst soc_system.hps_0.clk_0 -pg 1
+preplace inst soc_system.hps_0.usb1 -pg 1
+preplace inst soc_system.hps_0.i2c1 -pg 1
+preplace inst soc_system.hps_0.fpgamgr -pg 1
+preplace inst soc_system.hps_0.bridges -pg 1
+preplace inst soc_system.hps_0.hps_io -pg 1
+preplace inst soc_system.fifo_0 -pg 1 -lvl 3 -y 50
+preplace inst soc_system.hps_0.i2c2 -pg 1
+preplace inst soc_system.hps_0.wd_timer0 -pg 1
+preplace inst soc_system.hps_0.rstmgr -pg 1
+preplace inst soc_system.hps_0.dma -pg 1
+preplace inst soc_system.hps_0.f2s_sdram_ref_clk -pg 1
+preplace inst soc_system.hps_0.i2c3 -pg 1
+preplace inst soc_system.hps_0.wd_timer1 -pg 1
+preplace inst soc_system.hps_0.timer0 -pg 1
+preplace inst soc_system.hps_0.eosc1 -pg 1
+preplace inst soc_system -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst soc_system.hps_0.dcan0 -pg 1
+preplace inst soc_system.hps_0.spim0 -pg 1
+preplace inst soc_system.hps_0.timer1 -pg 1
+preplace inst soc_system.hps_0.L2 -pg 1
+preplace inst soc_system.hps_0.eosc2 -pg 1
+preplace inst soc_system.hps_0.hps_io.border -pg 1
+preplace inst soc_system.camera_clk_0 -pg 1 -lvl 4 -y 350
+preplace inst soc_system.hps_0.scu -pg 1
+preplace inst soc_system.hps_0.dcan1 -pg 1
+preplace inst soc_system.hps_0.sdmmc -pg 1
+preplace inst soc_system.hps_0.spim1 -pg 1
+preplace inst soc_system.hps_0.gpio0 -pg 1
+preplace inst soc_system.hps_0.timer2 -pg 1
+preplace inst soc_system.hps_0.arm_a9_0 -pg 1
+preplace inst soc_system.hps_0.timer -pg 1
+preplace inst soc_system.hps_0.gpio1 -pg 1
+preplace inst soc_system.hps_0.timer3 -pg 1
+preplace inst soc_system.hps_0.arm_a9_1 -pg 1
+preplace inst soc_system.hps_0.nand0 -pg 1
+preplace inst soc_system.hps_0.gpio2 -pg 1
+preplace inst soc_system.hps_0.arm_gic_0 -pg 1
+preplace inst soc_system.hps_0 -pg 1 -lvl 1 -y 80
+preplace inst soc_system.clk_0 -pg 1 -lvl 2 -y 270
+preplace inst soc_system.camera_interface_0 -pg 1 -lvl 2 -y 30
+preplace inst soc_system.hps_0.f2s_periph_ref_clk -pg 1
+preplace inst soc_system.hps_0.fpga_interfaces -pg 1
+preplace inst soc_system.pll_0 -pg 1 -lvl 3 -y 270
+preplace inst soc_system.hps_0.axi_sdram -pg 1
+preplace inst soc_system.camera_io_0 -pg 1 -lvl 2 -y 150
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)hps_0.memory,(SLAVE)soc_system.hps_ddr3) 1 0 1 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(MASTER)camera_clk_0.xclk_io,(MASTER)soc_system.xclk_io) 1 4 1 N
+preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(SLAVE)camera_io_0.camera_data,(SLAVE)camera_interface_0.camera_data) 1 1 1 470
+preplace netloc INTERCONNECT<net_container>soc_system</net_container>(SLAVE)fifo_0.reset_out,(MASTER)clk_0.clk_reset,(SLAVE)clk_0.clk_in_reset,(SLAVE)fifo_0.reset_in,(SLAVE)camera_io_0.reset,(SLAVE)camera_interface_0.reset,(MASTER)hps_0.h2f_reset,(SLAVE)pll_0.reset) 1 1 2 410 340 770
+preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)camera_interface_0.clock_sink,(MASTER)camera_clk_0.pclk_fpga,(SLAVE)camera_io_0.clock,(SLAVE)fifo_0.clk_in) 1 1 4 490 360 790 340 NJ 340 1170
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)clk_0.clk_in,(SLAVE)soc_system.clk) 1 0 2 NJ 280 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.pclk_io,(SLAVE)camera_clk_0.pclk_io) 1 0 4 NJ 380 NJ 380 NJ 380 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.camera_io,(SLAVE)camera_io_0.camera_io) 1 0 2 NJ 240 NJ
+preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(MASTER)camera_interface_0.camera_interface_fifo_ST,(SLAVE)fifo_0.in) 1 2 1 770
+preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(MASTER)hps_0.h2f_lw_axi_master,(SLAVE)fifo_0.out_csr) 1 1 2 NJ 140 N
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)hps_0.hps_io,(SLAVE)soc_system.hps) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(SLAVE)camera_clk_0.clock_input,(MASTER)pll_0.outclk0) 1 3 1 970
+preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)hps_0.h2f_axi_clock,(SLAVE)hps_0.f2h_axi_clock,(SLAVE)hps_0.h2f_lw_axi_clock,(SLAVE)pll_0.refclk,(SLAVE)fifo_0.clk_out,(MASTER)clk_0.clk) 1 0 3 100 260 NJ 260 810
+preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(SLAVE)fifo_0.out,(MASTER)hps_0.h2f_axi_master) 1 1 2 NJ 120 N
+levelinfo -pg 1 0 70 1270
+levelinfo -hier soc_system 80 220 520 840 1000 1190

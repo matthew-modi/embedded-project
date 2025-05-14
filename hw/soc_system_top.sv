@@ -268,11 +268,11 @@ module soc_system_top(
      .hps_hps_io_gpio_inst_GPIO54  ( HPS_KEY ),
      .hps_hps_io_gpio_inst_GPIO61  ( HPS_GSENSOR_INT ),
 
-.camera_io_cam_vsync ( GPIO_0[12] ),
-.camera_io_cam_href  ( GPIO_0[13] ),
-.pclk_io_cam_pclk  ( GPIO_0[14] ),
-.xclk_io_cam_xclk  ( GPIO_0[15] ),
-.camera_io_cam_data ( { GPIO_0[16],
+     .camera_io_cam_vsync ( GPIO_0[12] ),
+     .camera_io_cam_href  ( GPIO_0[13] ),
+     .pclk_io_clk  ( GPIO_0[14] ),
+     .xclk_io_clk  ( GPIO_0[15] ),
+     .camera_io_cam_data ( { GPIO_0[16],
               GPIO_0[17],
               GPIO_0[18],
               GPIO_0[19],
@@ -280,7 +280,7 @@ module soc_system_top(
               GPIO_0[21],
               GPIO_0[22],
               GPIO_0[23] } ),
-.camera_io_switch_shutter ( GPIO_0[26] )
+     .camera_io_switch_shutter ( GPIO_0[26] )
   );
 
    // The following quiet the "no driver" warnings for output
