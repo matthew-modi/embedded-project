@@ -8,7 +8,7 @@
 #include <linux/of_address.h>
 #include <linux/fs.h>
 #include <linux/uaccess.h>
-#include <stdint.h>
+#include <linux/types.h>
 #include "camera.h"
 
 // Define locally if not using HAL includes
@@ -34,14 +34,14 @@ static long camera_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
     switch (cmd) {
     case CAMERA_READ_WORD: {
-        uint32_t word = ioread32(dev.scanline_base);
-        if (copy_to_user((uint32_t *)arg, &word, sizeof(uint32_t)))
+        u32 word = ioread32(dev.scanline_base);
+        if (copy_to_user((u32 *)arg, &word, sizeof(u32)))
             return -EFAULT;
         break;
     }
 
     case CAMERA_FIFO_EMPTY: {
-        uint32_t status = ioread32(dev.fifo_empty_base);
+        u32 status = ioread32(dev.fifo_empty_base);
         int empty = (status >> 1) & 0x1;  // Bit 1 is EMPTY flag
         if (copy_to_user((int *)arg, &empty, sizeof(int)))
             return -EFAULT;
@@ -112,8 +112,10 @@ static int camera_remove(struct platform_device *pdev)
 
 #ifdef CONFIG_OF
 static const struct of_device_id camera_of_match[] = {
-    { .compatible = "csee4840,camera-1.0" },
-    {},
+    { .compatible = "csee4840,camera-1.0" },  /* your custom node */
+    { .compatible = "ALTR,fifo-21.1" },       /* default FIFO core */
+    { .compatible = "ALTR,fifo-1.0" },        /* fallback older format */
+    { /* sentinel */ }
 };
 MODULE_DEVICE_TABLE(of, camera_of_match);
 #endif
