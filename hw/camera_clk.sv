@@ -1,4 +1,6 @@
 module camera_io (
+  input logic      clk,
+
   output logic        cam_xclk,
   input  logic        cam_pclk,
 
