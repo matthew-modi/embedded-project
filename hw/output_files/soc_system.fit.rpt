@@ -1,5 +1,5 @@
 Fitter report for soc_system
-Wed May 14 02:26:36 2025
+Wed May 14 03:01:02 2025
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Wed May 14 02:26:36 2025       ;
+; Fitter Status                   ; Successful - Wed May 14 03:01:02 2025       ;
 ; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                   ; soc_system                                  ;
 ; Top-level Entity Name           ; soc_system_top                              ;
@@ -159,9 +159,9 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   1.4%      ;
-;     Processor 3            ;   1.4%      ;
-;     Processor 4            ;   1.3%      ;
+;     Processor 2            ;   1.3%      ;
+;     Processor 3            ;   1.2%      ;
+;     Processor 4            ;   1.2%      ;
 +----------------------------+-------------+
 
 
@@ -333,9 +333,9 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                        ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +---------------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                                   ; 0.00 % ( 0 / 694 )    ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                                   ; 0.00 % ( 0 / 693 )    ; N/A                     ; Source File       ; N/A                 ;       ;
 ; soc_system_hps_0_hps_io_border:border ; 0.00 % ( 0 / 829 )    ; N/A                     ; Post-Synthesis    ; N/A                 ;       ;
-; hard_block:auto_generated_inst        ; 0.00 % ( 0 / 17 )     ; N/A                     ; Source File       ; N/A                 ;       ;
+; hard_block:auto_generated_inst        ; 0.00 % ( 0 / 18 )     ; N/A                     ; Source File       ; N/A                 ;       ;
 +---------------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
 
@@ -441,10 +441,10 @@ The pin-out file can be found in /homes/user/stud/fall21/mem2382/Desktop/embedde
 ; Impedance control blocks                                    ; 1 / 4              ; 25 %  ;
 ; Hard Memory Controllers                                     ; 1 / 2              ; 50 %  ;
 ; Average interconnect usage (total/H/V)                      ; 0.1% / 0.1% / 0.3% ;       ;
-; Peak interconnect usage (total/H/V)                         ; 0.4% / 0.4% / 0.6% ;       ;
+; Peak interconnect usage (total/H/V)                         ; 0.5% / 0.4% / 0.6% ;       ;
 ; Maximum fan-out                                             ; 704                ;       ;
 ; Highest non-global fan-out                                  ; 198                ;       ;
-; Total fan-out                                               ; 2709               ;       ;
+; Total fan-out                                               ; 2710               ;       ;
 ; Average fan-out                                             ; 1.75               ;       ;
 +-------------------------------------------------------------+--------------------+-------+
 
@@ -543,23 +543,23 @@ The pin-out file can be found in /homes/user/stud/fall21/mem2382/Desktop/embedde
 ; VFIFO                                                       ; 0 / 25 ( 0 % )       ; 4 / 25 ( 16 % )                       ; 0 / 25 ( 0 % )                 ;
 ;                                                             ;                      ;                                       ;                                ;
 ; Connections                                                 ;                      ;                                       ;                                ;
-;     -- Input Connections                                    ; 152                  ; 77                                    ; 0                              ;
+;     -- Input Connections                                    ; 153                  ; 77                                    ; 0                              ;
 ;     -- Registered Input Connections                         ; 17                   ; 0                                     ; 0                              ;
-;     -- Output Connections                                   ; 110                  ; 102                                   ; 17                             ;
+;     -- Output Connections                                   ; 110                  ; 102                                   ; 18                             ;
 ;     -- Registered Output Connections                        ; 0                    ; 0                                     ; 0                              ;
 ;                                                             ;                      ;                                       ;                                ;
 ; Internal Connections                                        ;                      ;                                       ;                                ;
-;     -- Total Connections                                    ; 765                  ; 5208                                  ; 54                             ;
+;     -- Total Connections                                    ; 765                  ; 5208                                  ; 56                             ;
 ;     -- Registered Connections                               ; 35                   ; 100                                   ; 0                              ;
 ;                                                             ;                      ;                                       ;                                ;
 ; External Connections                                        ;                      ;                                       ;                                ;
-;     -- Top                                                  ; 196                  ; 49                                    ; 17                             ;
+;     -- Top                                                  ; 196                  ; 49                                    ; 18                             ;
 ;     -- soc_system_hps_0_hps_io_border:border                ; 49                   ; 130                                   ; 0                              ;
-;     -- hard_block:auto_generated_inst                       ; 17                   ; 0                                     ; 0                              ;
+;     -- hard_block:auto_generated_inst                       ; 18                   ; 0                                     ; 0                              ;
 ;                                                             ;                      ;                                       ;                                ;
 ; Partition Interface                                         ;                      ;                                       ;                                ;
 ;     -- Input Ports                                          ; 44                   ; 12                                    ; 1                              ;
-;     -- Output Ports                                         ; 155                  ; 44                                    ; 2                              ;
+;     -- Output Ports                                         ; 155                  ; 44                                    ; 3                              ;
 ;     -- Bidir Ports                                          ; 163                  ; 65                                    ; 0                              ;
 ;                                                             ;                      ;                                       ;                                ;
 ; Registered Ports                                            ;                      ;                                       ;                                ;
@@ -825,7 +825,7 @@ The pin-out file can be found in /homes/user/stud/fall21/mem2382/Desktop/embedde
 ; GPIO_0[12]        ; AG16  ; 4A       ; 50           ; 0            ; 74           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; 1         ; no              ; yes        ; no       ; Off          ; 3.3-V LVTTL                     ; 16mA             ; Off                              ; Off                            ; --                                                                                                                                                                                ; no                         ; 0                   ; Off                         ; User                 ; 0 pF                 ; -                                                                                                                                                                                                                                                                                                                                                                          ;
 ; GPIO_0[13]        ; AE16  ; 4A       ; 52           ; 0            ; 34           ; 4                     ; 0                  ; no     ; no             ; no              ; no                     ; 1         ; no              ; yes        ; no       ; Off          ; 3.3-V LVTTL                     ; 16mA             ; Off                              ; Off                            ; --                                                                                                                                                                                ; no                         ; 0                   ; Off                         ; User                 ; 0 pF                 ; -                                                                                                                                                                                                                                                                                                                                                                          ;
 ; GPIO_0[14]        ; AF16  ; 4A       ; 52           ; 0            ; 51           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; 1         ; no              ; yes        ; no       ; Off          ; 3.3-V LVTTL                     ; 16mA             ; Off                              ; Off                            ; --                                                                                                                                                                                ; no                         ; 0                   ; Off                         ; User                 ; 0 pF                 ; -                                                                                                                                                                                                                                                                                                                                                                          ;
-; GPIO_0[15]        ; AG17  ; 4A       ; 50           ; 0            ; 91           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; 1         ; no              ; yes        ; no       ; Off          ; 3.3-V LVTTL                     ; 16mA             ; Off                              ; Off                            ; --                                                                                                                                                                                ; no                         ; 0                   ; Off                         ; User                 ; 0 pF                 ; -                                                                                                                                                                                                                                                                                                                                                                          ;
+; GPIO_0[15]        ; AG17  ; 4A       ; 50           ; 0            ; 91           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; 1         ; no              ; no         ; no       ; Off          ; 3.3-V LVTTL                     ; 16mA             ; Off                              ; Off                            ; --                                                                                                                                                                                ; no                         ; 0                   ; Off                         ; User                 ; 0 pF                 ; -                                                                                                                                                                                                                                                                                                                                                                          ;
 ; GPIO_0[16]        ; AA18  ; 4A       ; 68           ; 0            ; 17           ; 2                     ; 0                  ; no     ; no             ; no              ; no                     ; 1         ; no              ; yes        ; no       ; Off          ; 3.3-V LVTTL                     ; 16mA             ; Off                              ; Off                            ; --                                                                                                                                                                                ; no                         ; 0                   ; Off                         ; User                 ; 0 pF                 ; -                                                                                                                                                                                                                                                                                                                                                                          ;
 ; GPIO_0[17]        ; AA19  ; 4A       ; 72           ; 0            ; 17           ; 2                     ; 0                  ; no     ; no             ; no              ; no                     ; 1         ; no              ; yes        ; no       ; Off          ; 3.3-V LVTTL                     ; 16mA             ; Off                              ; Off                            ; --                                                                                                                                                                                ; no                         ; 0                   ; Off                         ; User                 ; 0 pF                 ; -                                                                                                                                                                                                                                                                                                                                                                          ;
 ; GPIO_0[18]        ; AE17  ; 4A       ; 50           ; 0            ; 40           ; 2                     ; 0                  ; no     ; no             ; no              ; no                     ; 1         ; no              ; yes        ; no       ; Off          ; 3.3-V LVTTL                     ; 16mA             ; Off                              ; Off                            ; --                                                                                                                                                                                ; no                         ; 0                   ; Off                         ; User                 ; 0 pF                 ; -                                                                                                                                                                                                                                                                                                                                                                          ;
@@ -3336,7 +3336,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|intermediate[5]                                                                                                                                                                                                                                                   ; HPSPERIPHERALSDMMC_X87_Y39_N111     ; 1       ; Output enable ; no     ; --                   ; --               ; --                        ;
 ; soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|intermediate[7]                                                                                                                                                                                                                                                   ; HPSPERIPHERALSDMMC_X87_Y39_N111     ; 1       ; Output enable ; no     ; --                   ; --               ; --                        ;
 ; soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|intermediate[9]                                                                                                                                                                                                                                                   ; HPSPERIPHERALSDMMC_X87_Y39_N111     ; 1       ; Output enable ; no     ; --                   ; --               ; --                        ;
-; soc_system:soc_system0|soc_system_pll_0:pll_0|altera_pll:altera_pll_i|outclk_wire[0]                                                                                                                                                                                                                                                                                                 ; PLLOUTPUTCOUNTER_X0_Y20_N1          ; 18      ; Clock         ; yes    ; Global Clock         ; GCLK6            ; --                        ;
+; soc_system:soc_system0|soc_system_pll_0:pll_0|altera_pll:altera_pll_i|outclk_wire[0]                                                                                                                                                                                                                                                                                                 ; PLLOUTPUTCOUNTER_X0_Y20_N1          ; 19      ; Clock         ; yes    ; Global Clock         ; GCLK5            ; --                        ;
 ; soc_system:soc_system0|vga_interface:vga_interface_0|pix16[0]~0                                                                                                                                                                                                                                                                                                                      ; LABCELL_X29_Y80_N33                 ; 8       ; Clock enable  ; no     ; --                   ; --               ; --                        ;
 ; soc_system:soc_system0|vga_interface:vga_interface_0|pix16[8]~1                                                                                                                                                                                                                                                                                                                      ; LABCELL_X29_Y80_N30                 ; 9       ; Clock enable  ; no     ; --                   ; --               ; --                        ;
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+---------+---------------+--------+----------------------+------------------+---------------------------+
@@ -3347,7 +3347,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------------------------------------------------------------------------+----------------------------+---------+----------------------+------------------+---------------------------+
 ; Name                                                                                 ; Location                   ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +--------------------------------------------------------------------------------------+----------------------------+---------+----------------------+------------------+---------------------------+
-; soc_system:soc_system0|soc_system_pll_0:pll_0|altera_pll:altera_pll_i|outclk_wire[0] ; PLLOUTPUTCOUNTER_X0_Y20_N1 ; 18      ; Global Clock         ; GCLK6            ; --                        ;
+; soc_system:soc_system0|soc_system_pll_0:pll_0|altera_pll:altera_pll_i|outclk_wire[0] ; PLLOUTPUTCOUNTER_X0_Y20_N1 ; 19      ; Global Clock         ; GCLK5            ; --                        ;
 +--------------------------------------------------------------------------------------+----------------------------+---------+----------------------+------------------+---------------------------+
 
 
@@ -3356,10 +3356,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------+-------------------------+
 ; Routing Resource Type                       ; Usage                   ;
 +---------------------------------------------+-------------------------+
-; Block interconnects                         ; 258 / 289,320 ( < 1 % ) ;
+; Block interconnects                         ; 259 / 289,320 ( < 1 % ) ;
 ; C12 interconnects                           ; 113 / 13,420 ( < 1 % )  ;
-; C2 interconnects                            ; 96 / 119,108 ( < 1 % )  ;
-; C4 interconnects                            ; 67 / 56,300 ( < 1 % )   ;
+; C2 interconnects                            ; 99 / 119,108 ( < 1 % )  ;
+; C4 interconnects                            ; 65 / 56,300 ( < 1 % )   ;
 ; DQS bus muxes                               ; 4 / 25 ( 16 % )         ;
 ; DQS-18 I/O buses                            ; 0 / 25 ( 0 % )          ;
 ; DQS-9 I/O buses                             ; 4 / 25 ( 16 % )         ;
@@ -3421,11 +3421,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Horizontal periphery clocks                 ; 0 / 72 ( 0 % )          ;
 ; Local interconnects                         ; 2 / 84,580 ( < 1 % )    ;
 ; Quadrant clocks                             ; 0 / 66 ( 0 % )          ;
-; R14 interconnects                           ; 107 / 12,676 ( < 1 % )  ;
-; R14/C12 interconnect drivers                ; 184 / 20,720 ( < 1 % )  ;
+; R14 interconnects                           ; 110 / 12,676 ( < 1 % )  ;
+; R14/C12 interconnect drivers                ; 187 / 20,720 ( < 1 % )  ;
 ; R3 interconnects                            ; 85 / 130,992 ( < 1 % )  ;
-; R6 interconnects                            ; 37 / 266,960 ( < 1 % )  ;
-; Spine clocks                                ; 1 / 360 ( < 1 % )       ;
+; R6 interconnects                            ; 31 / 266,960 ( < 1 % )  ;
+; Spine clocks                                ; 2 / 360 ( < 1 % )       ;
 ; Wire stub REs                               ; 0 / 15,858 ( 0 % )      ;
 +---------------------------------------------+-------------------------+
 
@@ -3487,9 +3487,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------+--------------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+-----------+-----------+--------------+
 ; Pin/Rules           ; IO_000002    ; IO_000001    ; IO_000003    ; IO_000004    ; IO_000005    ; IO_000006 ; IO_000007    ; IO_000008    ; IO_000047    ; IO_000046    ; IO_000045    ; IO_000027    ; IO_000026    ; IO_000024    ; IO_000023    ; IO_000022    ; IO_000021    ; IO_000020    ; IO_000019    ; IO_000018    ; IO_000015    ; IO_000014    ; IO_000013    ; IO_000012    ; IO_000011    ; IO_000010 ; IO_000009 ; IO_000034    ;
 +---------------------+--------------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+-----------+-----------+--------------+
-; Total Pass          ; 0            ; 290          ; 290          ; 0            ; 32           ; 362       ; 290          ; 0            ; 0            ; 0            ; 0            ; 0            ; 71           ; 46           ; 18           ; 0            ; 0            ; 0            ; 46           ; 25           ; 0            ; 0            ; 0            ; 46           ; 25           ; 362       ; 362       ; 257          ;
+; Total Pass          ; 0            ; 290          ; 290          ; 0            ; 32           ; 362       ; 290          ; 0            ; 0            ; 0            ; 0            ; 0            ; 71           ; 46           ; 17           ; 0            ; 0            ; 0            ; 46           ; 25           ; 0            ; 0            ; 0            ; 46           ; 25           ; 362       ; 362       ; 257          ;
 ; Total Unchecked     ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0         ; 0            ;
-; Total Inapplicable  ; 362          ; 72           ; 72           ; 362          ; 330          ; 0         ; 72           ; 362          ; 362          ; 362          ; 362          ; 362          ; 291          ; 316          ; 344          ; 362          ; 362          ; 362          ; 316          ; 337          ; 362          ; 362          ; 362          ; 316          ; 337          ; 0         ; 0         ; 105          ;
+; Total Inapplicable  ; 362          ; 72           ; 72           ; 362          ; 330          ; 0         ; 72           ; 362          ; 362          ; 362          ; 362          ; 362          ; 291          ; 316          ; 345          ; 362          ; 362          ; 362          ; 316          ; 337          ; 362          ; 362          ; 362          ; 316          ; 337          ; 0         ; 0         ; 105          ;
 ; Total Fail          ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0         ; 0            ;
 ; ADC_DIN             ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Pass         ;
 ; ADC_DOUT            ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ;
@@ -3705,7 +3705,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; GPIO_0[12]          ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Pass         ;
 ; GPIO_0[13]          ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Pass         ;
 ; GPIO_0[14]          ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Pass         ;
-; GPIO_0[15]          ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Pass         ;
+; GPIO_0[15]          ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Pass         ;
 ; GPIO_0[16]          ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Pass         ;
 ; GPIO_0[17]          ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Pass         ;
 ; GPIO_0[18]          ; Inapplicable ; Pass         ; Pass         ; Inapplicable ; Inapplicable ; Pass      ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Pass         ;
@@ -3917,7 +3917,7 @@ Critical Warning (174073): No exact pin location assignment(s) for 1 RUP, RDN, o
     Info (174074): RUP, RDN, or RZQ pin HPS_DDR3_RZQ not assigned to an exact location on the device File: /homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/soc_system_top.sv Line: 119
 Info (184020): Starting Fitter periphery placement operations
 Info (11178): Promoted 1 clock (1 global)
-    Info (11162): soc_system:soc_system0|soc_system_pll_0:pll_0|altera_pll:altera_pll_i|outclk_wire[0]~CLKENA0 with 18 fanout uses global clock CLKCTRL_G6
+    Info (11162): soc_system:soc_system0|soc_system_pll_0:pll_0|altera_pll:altera_pll_i|outclk_wire[0]~CLKENA0 with 19 fanout uses global clock CLKCTRL_G5
 Info (184021): Fitter periphery placement operations ending: elapsed time is 00:00:01
 Info (332104): Reading SDC File: 'soc_system/synthesis/submodules/hps_sdram_p0.sdc'
 Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
@@ -4274,12 +4274,12 @@ Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
-Info (11888): Total time spent on timing analysis during the Fitter is 2.75 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 2.64 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:24
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:22
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Warning (169064): Following 15 pins have no output enable or a GND or VCC output enable - later changes to this connectivity may change fitting results
     Info (169065): Pin GPIO_0[12] has a permanently disabled output enable File: /homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/soc_system_top.sv Line: 82
@@ -4380,10 +4380,10 @@ Info (169186): Following groups of pins have the same dynamic on-chip terminatio
         Info (169066): Type bi-directional pin HPS_DDR3_DQ[21] uses the SSTL-15 Class I I/O standard File: /homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/soc_system_top.sv Line: 113
 Info (144001): Generated suppressed messages file /homes/user/stud/fall21/mem2382/Desktop/embedded-project/hw/output_files/soc_system.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 141 warnings
-    Info: Peak virtual memory: 2933 megabytes
-    Info: Processing ended: Wed May 14 02:26:37 2025
-    Info: Elapsed time: 00:01:33
-    Info: Total CPU time (on all processors): 00:01:57
+    Info: Peak virtual memory: 2917 megabytes
+    Info: Processing ended: Wed May 14 03:01:04 2025
+    Info: Elapsed time: 00:01:30
+    Info: Total CPU time (on all processors): 00:01:53
 
 
 +----------------------------+
