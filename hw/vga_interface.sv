@@ -3,6 +3,10 @@
 // Assumes pclk = 25 MHz pixel clock.
 
 module vga_interface (
+  input logic       clk,         // 25 MHz PLL
+
+  output logic      xclk,       // 25 MHz pixel clock to camera
+
   input  logic        pclk,        // 25 MHz pixel clock from camera
   input  logic        reset,       // active‐high synchronous reset
   input  logic        cam_href,    // row‐valid from camera
@@ -16,6 +20,7 @@ module vga_interface (
   output logic        VGA_SYNC_n,  // unused
   output logic [7:0]  VGA_R, VGA_G, VGA_B
 );
+  assign xclk = clk;  // use same clock for camera
 
   // Assemble 16‐bit RGB565 over two bytes
   logic        byte_flag;
