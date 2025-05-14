@@ -97,6 +97,22 @@
          type = "String";
       }
    }
+   element soc_system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element soc_system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
 }
 ]]></parameter>
  <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
@@ -111,20 +127,28 @@
  <parameter name="hideFromIPCatalog" value="false" />
  <parameter name="lockedInterfaceDefinition" value="" />
  <parameter name="maxAdditionalLatency" value="1" />
- <parameter name="projectName" value="soc_system.qpf" />
+ <parameter name="projectName" value="" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="0" />
  <parameter name="testBenchDutName" value="" />
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
- <interface name="cam" internal="camera_io_0.camera_io" type="conduit" dir="end" />
+ <interface
+   name="camera_io"
+   internal="camera_io_0.camera_io"
+   type="conduit"
+   dir="end" />
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface name="hps" internal="hps_0.hps_io" type="conduit" dir="end" />
  <interface name="hps_ddr3" internal="hps_0.memory" type="conduit" dir="end" />
- <interface name="pclk" internal="camera_clk_0.pclk_io" type="clock" dir="end" />
+ <interface name="pclk_io" internal="camera_clk_0.pclk_io" type="clock" dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
- <interface name="xclk" internal="camera_clk_0.xclk_io" type="clock" dir="start" />
+ <interface
+   name="xclk_io"
+   internal="camera_clk_0.xclk_io"
+   type="clock"
+   dir="start" />
  <module name="camera_clk_0" kind="camera_clk" version="1.0" enabled="1" />
  <module
    name="camera_interface_0"
