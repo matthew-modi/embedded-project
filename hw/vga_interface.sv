@@ -19,7 +19,7 @@ module vga_interface (
   output logic        VGA_SYNC_n,  // unused
   output logic [7:0]  VGA_R, VGA_G, VGA_B
 );
-  assign xclk = clk;  // use same clock for camera
+  assign cam_xclk = clk;  // use same clock for camera
 
   // Assemble 16‐bit RGB565 over two bytes
   logic        byte_flag;
