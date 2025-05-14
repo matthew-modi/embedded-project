@@ -12,6 +12,4 @@ module camera_io (
   output logic [7:0] fpga_data,    // one byte of RGB565 to FPGA
   output logic       fpga_shutter
     );
-    assign cam_xclk = clk;
-    assign fpga_pclk = cam_pclk;
 endmodule
