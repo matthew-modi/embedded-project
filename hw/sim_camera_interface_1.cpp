@@ -84,5 +84,3 @@ int main() {
     delete dut;
     return 0;
 }
-
-
