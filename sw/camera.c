@@ -8,7 +8,7 @@
 #include <linux/of_address.h>
 #include <linux/fs.h>
 #include <linux/uaccess.h>
-#include <stdint.h>
+#include <linux/types.h>
 #include "camera.h"
 
 // Define locally if not using HAL includes

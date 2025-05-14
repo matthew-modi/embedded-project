@@ -2,7 +2,7 @@
 #define _CAMERA_H
 
 #include <linux/ioctl.h>
-#include <stdint.h>
+#include <linux/types.h>
 
 #define CAMERA_MAGIC 'q'
 
