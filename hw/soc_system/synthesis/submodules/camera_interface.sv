@@ -1,11 +1,11 @@
 module camera_interface (
 	//mock input 
+	input logic pclk,
 	input reset,
 
 	//camera inputs
 	input logic href,
 	input logic vsync,
-	input logic pclk,
 	input logic [7:0] d,
 
 	//other inputs 

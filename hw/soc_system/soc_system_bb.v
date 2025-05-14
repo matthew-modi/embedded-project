@@ -66,11 +66,13 @@ module soc_system (
 	hps_ddr3_mem_odt,
 	hps_ddr3_mem_dm,
 	hps_ddr3_oct_rzqin,
+	pclk_clk,
 	reset_reset_n,
-	c_mod_input_valid,
-	c_mod_input_startofpacket,
-	c_mod_input_data,
-	c_mod_input_endofpacket);	
+	xclk_clk,
+	cam_data,
+	cam_href,
+	cam_vsync,
+	cam_shutter);	
 
 	input		clk_clk;
 	output		hps_hps_io_emac1_inst_TX_CLK;
@@ -138,9 +140,11 @@ module soc_system (
 	output		hps_ddr3_mem_odt;
 	output	[3:0]	hps_ddr3_mem_dm;
 	input		hps_ddr3_oct_rzqin;
+	input		pclk_clk;
 	input		reset_reset_n;
-	input		c_mod_input_valid;
-	input		c_mod_input_startofpacket;
-	input	[7:0]	c_mod_input_data;
-	input		c_mod_input_endofpacket;
+	output		xclk_clk;
+	input	[7:0]	cam_data;
+	input		cam_href;
+	input		cam_vsync;
+	input		cam_shutter;
 endmodule
