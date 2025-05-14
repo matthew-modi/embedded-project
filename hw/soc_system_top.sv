@@ -316,7 +316,6 @@ module soc_system_top(
    assign FPGA_I2C_SDAT = SW[1] ? SW[0] : 1'bZ;
 
 assign GPIO_0[11:0]   = SW[1] ? {12{SW[0]}} : {12{1'bZ}};
-assign GPIO_0[25:12]  = {14{1'bZ}};
 assign GPIO_0[35:26]  = SW[1] ? {10{SW[0]}} : {10{1'bZ}};
 
    assign GPIO_1 = SW[1] ? { 36{ SW[0] } } : { 36{ 1'bZ } };   
@@ -339,7 +338,7 @@ assign GPIO_0[35:26]  = SW[1] ? {10{SW[0]}} : {10{1'bZ}};
 
    assign TD_RESET_N = SW[0];
 
-assign GPIO_0[24] = 0;
+assign GPIO_0[24] = 1'b1;
 assign GPIO_0[25] = 0;
 							          
 endmodule
