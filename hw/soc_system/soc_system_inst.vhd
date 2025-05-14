@@ -3,7 +3,8 @@
 			cam_data                     : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- data
 			cam_href                     : in    std_logic                     := 'X';             -- href
 			cam_vsync                    : in    std_logic                     := 'X';             -- vsync
-			cam_clk_clk                  : in    std_logic                     := 'X';             -- clk
+			cam_xclk                     : out   std_logic;                                        -- xclk
+			cam_pclk                     : in    std_logic                     := 'X';             -- pclk
 			clk_clk                      : in    std_logic                     := 'X';             -- clk
 			hps_hps_io_emac1_inst_TX_CLK : out   std_logic;                                        -- hps_io_emac1_inst_TX_CLK
 			hps_hps_io_emac1_inst_TXD0   : out   std_logic;                                        -- hps_io_emac1_inst_TXD0
@@ -87,7 +88,8 @@
 			cam_data                     => CONNECTED_TO_cam_data,                     --      cam.data
 			cam_href                     => CONNECTED_TO_cam_href,                     --         .href
 			cam_vsync                    => CONNECTED_TO_cam_vsync,                    --         .vsync
-			cam_clk_clk                  => CONNECTED_TO_cam_clk_clk,                  --  cam_clk.clk
+			cam_xclk                     => CONNECTED_TO_cam_xclk,                     --         .xclk
+			cam_pclk                     => CONNECTED_TO_cam_pclk,                     --         .pclk
 			clk_clk                      => CONNECTED_TO_clk_clk,                      --      clk.clk
 			hps_hps_io_emac1_inst_TX_CLK => CONNECTED_TO_hps_hps_io_emac1_inst_TX_CLK, --      hps.hps_io_emac1_inst_TX_CLK
 			hps_hps_io_emac1_inst_TXD0   => CONNECTED_TO_hps_hps_io_emac1_inst_TXD0,   --         .hps_io_emac1_inst_TXD0

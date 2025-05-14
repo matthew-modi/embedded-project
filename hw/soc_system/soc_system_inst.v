@@ -2,7 +2,8 @@
 		.cam_data                     (<connected-to-cam_data>),                     //      cam.data
 		.cam_href                     (<connected-to-cam_href>),                     //         .href
 		.cam_vsync                    (<connected-to-cam_vsync>),                    //         .vsync
-		.cam_clk_clk                  (<connected-to-cam_clk_clk>),                  //  cam_clk.clk
+		.cam_xclk                     (<connected-to-cam_xclk>),                     //         .xclk
+		.cam_pclk                     (<connected-to-cam_pclk>),                     //         .pclk
 		.clk_clk                      (<connected-to-clk_clk>),                      //      clk.clk
 		.hps_hps_io_emac1_inst_TX_CLK (<connected-to-hps_hps_io_emac1_inst_TX_CLK>), //      hps.hps_io_emac1_inst_TX_CLK
 		.hps_hps_io_emac1_inst_TXD0   (<connected-to-hps_hps_io_emac1_inst_TXD0>),   //         .hps_io_emac1_inst_TXD0

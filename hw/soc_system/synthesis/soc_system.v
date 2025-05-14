@@ -7,7 +7,8 @@ module soc_system (
 		input  wire [7:0]  cam_data,                     //      cam.data
 		input  wire        cam_href,                     //         .href
 		input  wire        cam_vsync,                    //         .vsync
-		input  wire        cam_clk_clk,                  //  cam_clk.clk
+		output wire        cam_xclk,                     //         .xclk
+		input  wire        cam_pclk,                     //         .pclk
 		input  wire        clk_clk,                      //      clk.clk
 		output wire        hps_hps_io_emac1_inst_TX_CLK, //      hps.hps_io_emac1_inst_TX_CLK
 		output wire        hps_hps_io_emac1_inst_TXD0,   //         .hps_io_emac1_inst_TXD0
@@ -84,6 +85,8 @@ module soc_system (
 		output wire        vga_sync_n,                   //         .sync_n
 		output wire        vga_vs                        //         .vs
 	);
+
+	wire    pll_0_outclk0_clk; // pll_0:outclk_0 -> vga_interface_0:clk
 
 	soc_system_hps_0 #(
 		.F2S_Width (2),
@@ -271,20 +274,29 @@ module soc_system (
 		.h2f_lw_RREADY            ()                              //                  .rready
 	);
 
+	soc_system_pll_0 pll_0 (
+		.refclk   (clk_clk),           //  refclk.clk
+		.rst      (~reset_reset_n),    //   reset.reset
+		.outclk_0 (pll_0_outclk0_clk), // outclk0.clk
+		.locked   ()                   // (terminated)
+	);
+
 	vga_interface vga_interface_0 (
-		.reset       (~reset_reset_n), // reset.reset
-		.VGA_B       (vga_b),          //   vga.b
-		.VGA_BLANK_n (vga_blank_n),    //      .blank_n
-		.VGA_CLK     (vga_clk),        //      .clk
-		.VGA_G       (vga_g),          //      .g
-		.VGA_HS      (vga_hs),         //      .hs
-		.VGA_R       (vga_r),          //      .r
-		.VGA_SYNC_n  (vga_sync_n),     //      .sync_n
-		.VGA_VS      (vga_vs),         //      .vs
-		.pclk        (cam_clk_clk),    // clock.clk
-		.cam_data    (cam_data),       //   cam.data
-		.cam_href    (cam_href),       //      .href
-		.cam_vsync   (cam_vsync)       //      .vsync
+		.reset       (~reset_reset_n),    // reset.reset
+		.VGA_B       (vga_b),             //   vga.b
+		.VGA_BLANK_n (vga_blank_n),       //      .blank_n
+		.VGA_CLK     (vga_clk),           //      .clk
+		.VGA_G       (vga_g),             //      .g
+		.VGA_HS      (vga_hs),            //      .hs
+		.VGA_R       (vga_r),             //      .r
+		.VGA_SYNC_n  (vga_sync_n),        //      .sync_n
+		.VGA_VS      (vga_vs),            //      .vs
+		.clk         (pll_0_outclk0_clk), // clock.clk
+		.cam_data    (cam_data),          //   cam.data
+		.cam_href    (cam_href),          //      .href
+		.cam_vsync   (cam_vsync),         //      .vsync
+		.cam_xclk    (cam_xclk),          //      .xclk
+		.cam_pclk    (cam_pclk)           //      .pclk
 	);
 
 endmodule

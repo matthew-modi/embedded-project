@@ -6,6 +6,8 @@ Progress: Adding clk_0 [clock_source 21.1]
 Progress: Parameterizing module clk_0
 Progress: Adding hps_0 [altera_hps 21.1]
 Progress: Parameterizing module hps_0
+Progress: Adding pll_0 [altera_pll 21.1]
+Progress: Parameterizing module pll_0
 Progress: Adding vga_interface_0 [vga_interface 1.0]
 Progress: Parameterizing module vga_interface_0
 Progress: Building connections
@@ -14,6 +16,8 @@ Progress: Validating
 Progress: Done reading input file
 Info: soc_system.hps_0: HPS Main PLL counter settings: n = 0  m = 73
 Info: soc_system.hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
+Info: soc_system.pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Info: soc_system.pll_0: Able to implement PLL with user settings
 Info: qsys-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
@@ -25,6 +29,8 @@ Progress: Adding clk_0 [clock_source 21.1]
 Progress: Parameterizing module clk_0
 Progress: Adding hps_0 [altera_hps 21.1]
 Progress: Parameterizing module hps_0
+Progress: Adding pll_0 [altera_pll 21.1]
+Progress: Parameterizing module pll_0
 Progress: Adding vga_interface_0 [vga_interface 1.0]
 Progress: Parameterizing module vga_interface_0
 Progress: Building connections
@@ -33,15 +39,18 @@ Progress: Validating
 Progress: Done reading input file
 Info: soc_system.hps_0: HPS Main PLL counter settings: n = 0  m = 73
 Info: soc_system.hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
+Info: soc_system.pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Info: soc_system.pll_0: Able to implement PLL with user settings
 Info: soc_system: Generating soc_system "soc_system" for QUARTUS_SYNTH
 Info: hps_0: "Running  for module: hps_0"
 Info: hps_0: HPS Main PLL counter settings: n = 0  m = 73
 Info: hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
 Info: hps_0: "soc_system" instantiated altera_hps "hps_0"
+Info: pll_0: "soc_system" instantiated altera_pll "pll_0"
 Info: vga_interface_0: "soc_system" instantiated vga_interface "vga_interface_0"
 Info: fpga_interfaces: "hps_0" instantiated altera_interface_generator "fpga_interfaces"
 Info: hps_io: "hps_0" instantiated altera_hps_io "hps_io"
 Info: border: "hps_io" instantiated altera_interface_generator "border"
-Info: soc_system: Done "soc_system" with 6 modules, 50 files
+Info: soc_system: Done "soc_system" with 7 modules, 52 files
 Info: qsys-generate succeeded.
 Info: Finished: Create HDL design files for synthesis

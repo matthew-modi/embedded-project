@@ -279,7 +279,8 @@ module soc_system_top(
 
 .cam_vsync ( GPIO_0[12] ),
 .cam_href  ( GPIO_0[13] ),
-.cam_clk_clk   ( GPIO_0[14] ),
+.cam_pclk  ( GPIO_0[14] ),
+.cam_xclk  ( GPIO_0[15] ),
 .cam_data ( { GPIO_0[16],
               GPIO_0[17],
               GPIO_0[18],
@@ -338,7 +339,6 @@ assign GPIO_0[35:26]  = SW[1] ? {10{SW[0]}} : {10{1'bZ}};
 
    assign TD_RESET_N = SW[0];
 
-assign GPIO_0[15] = CLOCK_50;
 assign GPIO_0[24] = 0;
 assign GPIO_0[25] = 0;
 							          

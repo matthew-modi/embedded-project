@@ -3,7 +3,8 @@ module soc_system (
 	cam_data,
 	cam_href,
 	cam_vsync,
-	cam_clk_clk,
+	cam_xclk,
+	cam_pclk,
 	clk_clk,
 	hps_hps_io_emac1_inst_TX_CLK,
 	hps_hps_io_emac1_inst_TXD0,
@@ -83,7 +84,8 @@ module soc_system (
 	input	[7:0]	cam_data;
 	input		cam_href;
 	input		cam_vsync;
-	input		cam_clk_clk;
+	output		cam_xclk;
+	input		cam_pclk;
 	input		clk_clk;
 	output		hps_hps_io_emac1_inst_TX_CLK;
 	output		hps_hps_io_emac1_inst_TXD0;
