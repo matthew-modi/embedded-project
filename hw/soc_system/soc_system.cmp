@@ -3,7 +3,8 @@
 			cam_data                     : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- data
 			cam_href                     : in    std_logic                     := 'X';             -- href
 			cam_vsync                    : in    std_logic                     := 'X';             -- vsync
-			cam_clk_clk                  : in    std_logic                     := 'X';             -- clk
+			cam_xclk                     : out   std_logic;                                        -- xclk
+			cam_pclk                     : in    std_logic                     := 'X';             -- pclk
 			clk_clk                      : in    std_logic                     := 'X';             -- clk
 			hps_hps_io_emac1_inst_TX_CLK : out   std_logic;                                        -- hps_io_emac1_inst_TX_CLK
 			hps_hps_io_emac1_inst_TXD0   : out   std_logic;                                        -- hps_io_emac1_inst_TXD0
