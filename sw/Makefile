@@ -19,7 +19,7 @@ clean:
 	${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} clean
 	${RM} controller
 
-TARFILES = Makefile README camera.h camera.c controller.c
+TARFILES = Makefile README camera.h camera.c barcode_decoder.c barcode_decoder.h read_scanline.c
 TARFILE = lab3-sw.tar.gz
 .PHONY : tar
 tar : $(TARFILE)
