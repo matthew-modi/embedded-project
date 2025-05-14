@@ -4,89 +4,89 @@
 
 `timescale 1 ps / 1 ps
 module soc_system (
-		input  wire [7:0]  cam_data,                     //      cam.data
-		input  wire        cam_href,                     //         .href
-		input  wire        cam_vsync,                    //         .vsync
-		input  wire        cam_shutter,                  //         .shutter
-		input  wire        clk_clk,                      //      clk.clk
-		output wire        hps_hps_io_emac1_inst_TX_CLK, //      hps.hps_io_emac1_inst_TX_CLK
-		output wire        hps_hps_io_emac1_inst_TXD0,   //         .hps_io_emac1_inst_TXD0
-		output wire        hps_hps_io_emac1_inst_TXD1,   //         .hps_io_emac1_inst_TXD1
-		output wire        hps_hps_io_emac1_inst_TXD2,   //         .hps_io_emac1_inst_TXD2
-		output wire        hps_hps_io_emac1_inst_TXD3,   //         .hps_io_emac1_inst_TXD3
-		input  wire        hps_hps_io_emac1_inst_RXD0,   //         .hps_io_emac1_inst_RXD0
-		inout  wire        hps_hps_io_emac1_inst_MDIO,   //         .hps_io_emac1_inst_MDIO
-		output wire        hps_hps_io_emac1_inst_MDC,    //         .hps_io_emac1_inst_MDC
-		input  wire        hps_hps_io_emac1_inst_RX_CTL, //         .hps_io_emac1_inst_RX_CTL
-		output wire        hps_hps_io_emac1_inst_TX_CTL, //         .hps_io_emac1_inst_TX_CTL
-		input  wire        hps_hps_io_emac1_inst_RX_CLK, //         .hps_io_emac1_inst_RX_CLK
-		input  wire        hps_hps_io_emac1_inst_RXD1,   //         .hps_io_emac1_inst_RXD1
-		input  wire        hps_hps_io_emac1_inst_RXD2,   //         .hps_io_emac1_inst_RXD2
-		input  wire        hps_hps_io_emac1_inst_RXD3,   //         .hps_io_emac1_inst_RXD3
-		inout  wire        hps_hps_io_sdio_inst_CMD,     //         .hps_io_sdio_inst_CMD
-		inout  wire        hps_hps_io_sdio_inst_D0,      //         .hps_io_sdio_inst_D0
-		inout  wire        hps_hps_io_sdio_inst_D1,      //         .hps_io_sdio_inst_D1
-		output wire        hps_hps_io_sdio_inst_CLK,     //         .hps_io_sdio_inst_CLK
-		inout  wire        hps_hps_io_sdio_inst_D2,      //         .hps_io_sdio_inst_D2
-		inout  wire        hps_hps_io_sdio_inst_D3,      //         .hps_io_sdio_inst_D3
-		inout  wire        hps_hps_io_usb1_inst_D0,      //         .hps_io_usb1_inst_D0
-		inout  wire        hps_hps_io_usb1_inst_D1,      //         .hps_io_usb1_inst_D1
-		inout  wire        hps_hps_io_usb1_inst_D2,      //         .hps_io_usb1_inst_D2
-		inout  wire        hps_hps_io_usb1_inst_D3,      //         .hps_io_usb1_inst_D3
-		inout  wire        hps_hps_io_usb1_inst_D4,      //         .hps_io_usb1_inst_D4
-		inout  wire        hps_hps_io_usb1_inst_D5,      //         .hps_io_usb1_inst_D5
-		inout  wire        hps_hps_io_usb1_inst_D6,      //         .hps_io_usb1_inst_D6
-		inout  wire        hps_hps_io_usb1_inst_D7,      //         .hps_io_usb1_inst_D7
-		input  wire        hps_hps_io_usb1_inst_CLK,     //         .hps_io_usb1_inst_CLK
-		output wire        hps_hps_io_usb1_inst_STP,     //         .hps_io_usb1_inst_STP
-		input  wire        hps_hps_io_usb1_inst_DIR,     //         .hps_io_usb1_inst_DIR
-		input  wire        hps_hps_io_usb1_inst_NXT,     //         .hps_io_usb1_inst_NXT
-		output wire        hps_hps_io_spim1_inst_CLK,    //         .hps_io_spim1_inst_CLK
-		output wire        hps_hps_io_spim1_inst_MOSI,   //         .hps_io_spim1_inst_MOSI
-		input  wire        hps_hps_io_spim1_inst_MISO,   //         .hps_io_spim1_inst_MISO
-		output wire        hps_hps_io_spim1_inst_SS0,    //         .hps_io_spim1_inst_SS0
-		input  wire        hps_hps_io_uart0_inst_RX,     //         .hps_io_uart0_inst_RX
-		output wire        hps_hps_io_uart0_inst_TX,     //         .hps_io_uart0_inst_TX
-		inout  wire        hps_hps_io_i2c0_inst_SDA,     //         .hps_io_i2c0_inst_SDA
-		inout  wire        hps_hps_io_i2c0_inst_SCL,     //         .hps_io_i2c0_inst_SCL
-		inout  wire        hps_hps_io_i2c1_inst_SDA,     //         .hps_io_i2c1_inst_SDA
-		inout  wire        hps_hps_io_i2c1_inst_SCL,     //         .hps_io_i2c1_inst_SCL
-		inout  wire        hps_hps_io_gpio_inst_GPIO09,  //         .hps_io_gpio_inst_GPIO09
-		inout  wire        hps_hps_io_gpio_inst_GPIO35,  //         .hps_io_gpio_inst_GPIO35
-		inout  wire        hps_hps_io_gpio_inst_GPIO40,  //         .hps_io_gpio_inst_GPIO40
-		inout  wire        hps_hps_io_gpio_inst_GPIO48,  //         .hps_io_gpio_inst_GPIO48
-		inout  wire        hps_hps_io_gpio_inst_GPIO53,  //         .hps_io_gpio_inst_GPIO53
-		inout  wire        hps_hps_io_gpio_inst_GPIO54,  //         .hps_io_gpio_inst_GPIO54
-		inout  wire        hps_hps_io_gpio_inst_GPIO61,  //         .hps_io_gpio_inst_GPIO61
-		output wire [14:0] hps_ddr3_mem_a,               // hps_ddr3.mem_a
-		output wire [2:0]  hps_ddr3_mem_ba,              //         .mem_ba
-		output wire        hps_ddr3_mem_ck,              //         .mem_ck
-		output wire        hps_ddr3_mem_ck_n,            //         .mem_ck_n
-		output wire        hps_ddr3_mem_cke,             //         .mem_cke
-		output wire        hps_ddr3_mem_cs_n,            //         .mem_cs_n
-		output wire        hps_ddr3_mem_ras_n,           //         .mem_ras_n
-		output wire        hps_ddr3_mem_cas_n,           //         .mem_cas_n
-		output wire        hps_ddr3_mem_we_n,            //         .mem_we_n
-		output wire        hps_ddr3_mem_reset_n,         //         .mem_reset_n
-		inout  wire [31:0] hps_ddr3_mem_dq,              //         .mem_dq
-		inout  wire [3:0]  hps_ddr3_mem_dqs,             //         .mem_dqs
-		inout  wire [3:0]  hps_ddr3_mem_dqs_n,           //         .mem_dqs_n
-		output wire        hps_ddr3_mem_odt,             //         .mem_odt
-		output wire [3:0]  hps_ddr3_mem_dm,              //         .mem_dm
-		input  wire        hps_ddr3_oct_rzqin,           //         .oct_rzqin
-		input  wire        pclk_clk,                     //     pclk.clk
-		input  wire        reset_reset_n,                //    reset.reset_n
-		output wire        xclk_clk                      //     xclk.clk
+		input  wire [7:0]  camera_io_cam_data,           // camera_io.cam_data
+		input  wire        camera_io_cam_href,           //          .cam_href
+		input  wire        camera_io_cam_vsync,          //          .cam_vsync
+		input  wire        camera_io_switch_shutter,     //          .switch_shutter
+		input  wire        clk_clk,                      //       clk.clk
+		output wire        hps_hps_io_emac1_inst_TX_CLK, //       hps.hps_io_emac1_inst_TX_CLK
+		output wire        hps_hps_io_emac1_inst_TXD0,   //          .hps_io_emac1_inst_TXD0
+		output wire        hps_hps_io_emac1_inst_TXD1,   //          .hps_io_emac1_inst_TXD1
+		output wire        hps_hps_io_emac1_inst_TXD2,   //          .hps_io_emac1_inst_TXD2
+		output wire        hps_hps_io_emac1_inst_TXD3,   //          .hps_io_emac1_inst_TXD3
+		input  wire        hps_hps_io_emac1_inst_RXD0,   //          .hps_io_emac1_inst_RXD0
+		inout  wire        hps_hps_io_emac1_inst_MDIO,   //          .hps_io_emac1_inst_MDIO
+		output wire        hps_hps_io_emac1_inst_MDC,    //          .hps_io_emac1_inst_MDC
+		input  wire        hps_hps_io_emac1_inst_RX_CTL, //          .hps_io_emac1_inst_RX_CTL
+		output wire        hps_hps_io_emac1_inst_TX_CTL, //          .hps_io_emac1_inst_TX_CTL
+		input  wire        hps_hps_io_emac1_inst_RX_CLK, //          .hps_io_emac1_inst_RX_CLK
+		input  wire        hps_hps_io_emac1_inst_RXD1,   //          .hps_io_emac1_inst_RXD1
+		input  wire        hps_hps_io_emac1_inst_RXD2,   //          .hps_io_emac1_inst_RXD2
+		input  wire        hps_hps_io_emac1_inst_RXD3,   //          .hps_io_emac1_inst_RXD3
+		inout  wire        hps_hps_io_sdio_inst_CMD,     //          .hps_io_sdio_inst_CMD
+		inout  wire        hps_hps_io_sdio_inst_D0,      //          .hps_io_sdio_inst_D0
+		inout  wire        hps_hps_io_sdio_inst_D1,      //          .hps_io_sdio_inst_D1
+		output wire        hps_hps_io_sdio_inst_CLK,     //          .hps_io_sdio_inst_CLK
+		inout  wire        hps_hps_io_sdio_inst_D2,      //          .hps_io_sdio_inst_D2
+		inout  wire        hps_hps_io_sdio_inst_D3,      //          .hps_io_sdio_inst_D3
+		inout  wire        hps_hps_io_usb1_inst_D0,      //          .hps_io_usb1_inst_D0
+		inout  wire        hps_hps_io_usb1_inst_D1,      //          .hps_io_usb1_inst_D1
+		inout  wire        hps_hps_io_usb1_inst_D2,      //          .hps_io_usb1_inst_D2
+		inout  wire        hps_hps_io_usb1_inst_D3,      //          .hps_io_usb1_inst_D3
+		inout  wire        hps_hps_io_usb1_inst_D4,      //          .hps_io_usb1_inst_D4
+		inout  wire        hps_hps_io_usb1_inst_D5,      //          .hps_io_usb1_inst_D5
+		inout  wire        hps_hps_io_usb1_inst_D6,      //          .hps_io_usb1_inst_D6
+		inout  wire        hps_hps_io_usb1_inst_D7,      //          .hps_io_usb1_inst_D7
+		input  wire        hps_hps_io_usb1_inst_CLK,     //          .hps_io_usb1_inst_CLK
+		output wire        hps_hps_io_usb1_inst_STP,     //          .hps_io_usb1_inst_STP
+		input  wire        hps_hps_io_usb1_inst_DIR,     //          .hps_io_usb1_inst_DIR
+		input  wire        hps_hps_io_usb1_inst_NXT,     //          .hps_io_usb1_inst_NXT
+		output wire        hps_hps_io_spim1_inst_CLK,    //          .hps_io_spim1_inst_CLK
+		output wire        hps_hps_io_spim1_inst_MOSI,   //          .hps_io_spim1_inst_MOSI
+		input  wire        hps_hps_io_spim1_inst_MISO,   //          .hps_io_spim1_inst_MISO
+		output wire        hps_hps_io_spim1_inst_SS0,    //          .hps_io_spim1_inst_SS0
+		input  wire        hps_hps_io_uart0_inst_RX,     //          .hps_io_uart0_inst_RX
+		output wire        hps_hps_io_uart0_inst_TX,     //          .hps_io_uart0_inst_TX
+		inout  wire        hps_hps_io_i2c0_inst_SDA,     //          .hps_io_i2c0_inst_SDA
+		inout  wire        hps_hps_io_i2c0_inst_SCL,     //          .hps_io_i2c0_inst_SCL
+		inout  wire        hps_hps_io_i2c1_inst_SDA,     //          .hps_io_i2c1_inst_SDA
+		inout  wire        hps_hps_io_i2c1_inst_SCL,     //          .hps_io_i2c1_inst_SCL
+		inout  wire        hps_hps_io_gpio_inst_GPIO09,  //          .hps_io_gpio_inst_GPIO09
+		inout  wire        hps_hps_io_gpio_inst_GPIO35,  //          .hps_io_gpio_inst_GPIO35
+		inout  wire        hps_hps_io_gpio_inst_GPIO40,  //          .hps_io_gpio_inst_GPIO40
+		inout  wire        hps_hps_io_gpio_inst_GPIO48,  //          .hps_io_gpio_inst_GPIO48
+		inout  wire        hps_hps_io_gpio_inst_GPIO53,  //          .hps_io_gpio_inst_GPIO53
+		inout  wire        hps_hps_io_gpio_inst_GPIO54,  //          .hps_io_gpio_inst_GPIO54
+		inout  wire        hps_hps_io_gpio_inst_GPIO61,  //          .hps_io_gpio_inst_GPIO61
+		output wire [14:0] hps_ddr3_mem_a,               //  hps_ddr3.mem_a
+		output wire [2:0]  hps_ddr3_mem_ba,              //          .mem_ba
+		output wire        hps_ddr3_mem_ck,              //          .mem_ck
+		output wire        hps_ddr3_mem_ck_n,            //          .mem_ck_n
+		output wire        hps_ddr3_mem_cke,             //          .mem_cke
+		output wire        hps_ddr3_mem_cs_n,            //          .mem_cs_n
+		output wire        hps_ddr3_mem_ras_n,           //          .mem_ras_n
+		output wire        hps_ddr3_mem_cas_n,           //          .mem_cas_n
+		output wire        hps_ddr3_mem_we_n,            //          .mem_we_n
+		output wire        hps_ddr3_mem_reset_n,         //          .mem_reset_n
+		inout  wire [31:0] hps_ddr3_mem_dq,              //          .mem_dq
+		inout  wire [3:0]  hps_ddr3_mem_dqs,             //          .mem_dqs
+		inout  wire [3:0]  hps_ddr3_mem_dqs_n,           //          .mem_dqs_n
+		output wire        hps_ddr3_mem_odt,             //          .mem_odt
+		output wire [3:0]  hps_ddr3_mem_dm,              //          .mem_dm
+		input  wire        hps_ddr3_oct_rzqin,           //          .oct_rzqin
+		input  wire        pclk_io_clk,                  //   pclk_io.clk
+		input  wire        reset_reset_n,                //     reset.reset_n
+		output wire        xclk_io_clk                   //   xclk_io.clk
 	);
 
 	wire         camera_interface_0_camera_interface_fifo_st_valid; // camera_interface_0:fifo_enable -> fifo_0:avalonst_sink_valid
 	wire  [31:0] camera_interface_0_camera_interface_fifo_st_data;  // camera_interface_0:wide_bit_out -> fifo_0:avalonst_sink_data
 	wire         pll_0_outclk0_clk;                                 // pll_0:outclk_0 -> camera_clk_0:clk
 	wire         camera_clk_0_pclk_fpga_clk;                        // camera_clk_0:fpga_pclk -> [camera_interface_0:pclk, camera_io_0:clk, fifo_0:wrclock, rst_controller:clk]
-	wire   [7:0] camera_io_0_camera_data_data;                      // camera_io_0:fpga_data -> camera_interface_0:d
-	wire         camera_io_0_camera_data_vsync;                     // camera_io_0:fpga_vsync -> camera_interface_0:vsync
-	wire         camera_io_0_camera_data_shutter;                   // camera_io_0:fpga_shutter -> camera_interface_0:shutter_raw
-	wire         camera_io_0_camera_data_href;                      // camera_io_0:fpga_href -> camera_interface_0:href
+	wire   [7:0] camera_io_0_camera_data_d;                         // camera_io_0:d -> camera_interface_0:d
+	wire         camera_io_0_camera_data_vsync;                     // camera_io_0:vsync -> camera_interface_0:vsync
+	wire         camera_io_0_camera_data_shutter_raw;               // camera_io_0:shutter_raw -> camera_interface_0:shutter_raw
+	wire         camera_io_0_camera_data_href;                      // camera_io_0:href -> camera_interface_0:href
 	wire   [1:0] hps_0_h2f_axi_master_awburst;                      // hps_0:h2f_AWBURST -> mm_interconnect_0:hps_0_h2f_axi_master_awburst
 	wire   [3:0] hps_0_h2f_axi_master_arlen;                        // hps_0:h2f_ARLEN -> mm_interconnect_0:hps_0_h2f_axi_master_arlen
 	wire   [7:0] hps_0_h2f_axi_master_wstrb;                        // hps_0:h2f_WSTRB -> mm_interconnect_0:hps_0_h2f_axi_master_wstrb
@@ -174,9 +174,9 @@ module soc_system (
 
 	camera_io camera_clk_0 (
 		.clk       (pll_0_outclk0_clk),          // clock_input.clk
-		.cam_pclk  (pclk_clk),                   //     pclk_io.clk
+		.cam_pclk  (pclk_io_clk),                //     pclk_io.clk
 		.fpga_pclk (camera_clk_0_pclk_fpga_clk), //   pclk_fpga.clk
-		.cam_xclk  (xclk_clk)                    //     xclk_io.clk
+		.cam_xclk  (xclk_io_clk)                 //     xclk_io.clk
 	);
 
 	camera_interface camera_interface_0 (
@@ -184,23 +184,23 @@ module soc_system (
 		.pclk         (camera_clk_0_pclk_fpga_clk),                        //               clock_sink.clk
 		.href         (camera_io_0_camera_data_href),                      //              camera_data.href
 		.vsync        (camera_io_0_camera_data_vsync),                     //                         .vsync
-		.d            (camera_io_0_camera_data_data),                      //                         .data
-		.shutter_raw  (camera_io_0_camera_data_shutter),                   //                         .shutter
+		.d            (camera_io_0_camera_data_d),                         //                         .d
+		.shutter_raw  (camera_io_0_camera_data_shutter_raw),               //                         .shutter_raw
 		.fifo_enable  (camera_interface_0_camera_interface_fifo_st_valid), // camera_interface_fifo_ST.valid
 		.wide_bit_out (camera_interface_0_camera_interface_fifo_st_data)   //                         .data
 	);
 
 	camera_io camera_io_0 (
-		.cam_data       (cam_data),                        //   camera_io.data
-		.cam_href       (cam_href),                        //            .href
-		.cam_vsync      (cam_vsync),                       //            .vsync
-		.switch_shutter (cam_shutter),                     //            .shutter
-		.fpga_data      (camera_io_0_camera_data_data),    // camera_data.data
-		.fpga_href      (camera_io_0_camera_data_href),    //            .href
-		.fpga_vsync     (camera_io_0_camera_data_vsync),   //            .vsync
-		.fpga_shutter   (camera_io_0_camera_data_shutter), //            .shutter
-		.reset          (rst_controller_reset_out_reset),  //  reset_fake.reset
-		.clk            (camera_clk_0_pclk_fpga_clk)       //    clk_fake.clk
+		.cam_data       (camera_io_cam_data),                  //   camera_io.cam_data
+		.cam_href       (camera_io_cam_href),                  //            .cam_href
+		.cam_vsync      (camera_io_cam_vsync),                 //            .cam_vsync
+		.switch_shutter (camera_io_switch_shutter),            //            .switch_shutter
+		.d              (camera_io_0_camera_data_d),           // camera_data.d
+		.href           (camera_io_0_camera_data_href),        //            .href
+		.shutter_raw    (camera_io_0_camera_data_shutter_raw), //            .shutter_raw
+		.vsync          (camera_io_0_camera_data_vsync),       //            .vsync
+		.reset          (rst_controller_reset_out_reset),      //  reset_fake.reset
+		.clk            (camera_clk_0_pclk_fpga_clk)           //    clk_fake.clk
 	);
 
 	soc_system_fifo_0 fifo_0 (

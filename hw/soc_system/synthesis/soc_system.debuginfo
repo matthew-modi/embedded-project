@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="soc_system" kind="system" version="21.1" fabric="QSYS">
  <!-- Format version 21.1 842 (Future versions may contain additional information.) -->
- <!-- 2025.05.14.09:01:26 -->
+ <!-- 2025.05.14.09:49:33 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1747227639</value>
+  <value>1747230526</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -101,7 +101,7 @@
  </parameter>
  <parameter name="projectName">
   <type>java.lang.String</type>
-  <value>soc_system.qpf</value>
+  <value></value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -602,13 +602,13 @@ parameters are a RESULT of the module parameters. -->
     <name>d</name>
     <direction>Input</direction>
     <width>8</width>
-    <role>data</role>
+    <role>d</role>
    </port>
    <port>
     <name>shutter_raw</name>
     <direction>Input</direction>
     <width>1</width>
-    <role>shutter</role>
+    <role>shutter_raw</role>
    </port>
   </interface>
   <interface
@@ -807,25 +807,25 @@ parameters are a RESULT of the module parameters. -->
     <name>cam_data</name>
     <direction>Input</direction>
     <width>8</width>
-    <role>data</role>
+    <role>cam_data</role>
    </port>
    <port>
     <name>cam_href</name>
     <direction>Input</direction>
     <width>1</width>
-    <role>href</role>
+    <role>cam_href</role>
    </port>
    <port>
     <name>cam_vsync</name>
     <direction>Input</direction>
     <width>1</width>
-    <role>vsync</role>
+    <role>cam_vsync</role>
    </port>
    <port>
     <name>switch_shutter</name>
     <direction>Input</direction>
     <width>1</width>
-    <role>shutter</role>
+    <role>switch_shutter</role>
    </port>
   </interface>
   <interface name="camera_data" kind="conduit_end" version="21.1">
@@ -867,28 +867,28 @@ parameters are a RESULT of the module parameters. -->
    <type>conduit</type>
    <isStart>false</isStart>
    <port>
-    <name>fpga_data</name>
+    <name>d</name>
     <direction>Output</direction>
     <width>8</width>
-    <role>data</role>
+    <role>d</role>
    </port>
    <port>
-    <name>fpga_href</name>
+    <name>href</name>
     <direction>Output</direction>
     <width>1</width>
     <role>href</role>
    </port>
    <port>
-    <name>fpga_vsync</name>
+    <name>shutter_raw</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>shutter_raw</role>
+   </port>
+   <port>
+    <name>vsync</name>
     <direction>Output</direction>
     <width>1</width>
     <role>vsync</role>
-   </port>
-   <port>
-    <name>fpga_shutter</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>shutter</role>
    </port>
   </interface>
   <interface name="reset_fake" kind="reset_sink" version="21.1">
@@ -52003,7 +52003,7 @@ parameters are a RESULT of the module parameters. -->
   <name>camera_clk</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>camera_clk</displayName>
+  <displayName>CAMERA_CLK</displayName>
   <version>1.0</version>
  </plugin>
  <plugin>
@@ -52027,7 +52027,7 @@ parameters are a RESULT of the module parameters. -->
   <name>camera_interface</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>camera_interface</displayName>
+  <displayName>CAMERA_INTERFACE</displayName>
   <version>1.0</version>
  </plugin>
  <plugin>
@@ -52059,7 +52059,7 @@ parameters are a RESULT of the module parameters. -->
   <name>camera_io</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>camera_io</displayName>
+  <displayName>CAMERA_IO</displayName>
   <version>1.0</version>
  </plugin>
  <plugin>
@@ -52263,5 +52263,5 @@ parameters are a RESULT of the module parameters. -->
   <version>21.1</version>
  </plugin>
  <reportVersion>21.1 842</reportVersion>
- <uniqueIdentifier>CC96E51A76C800000196CEE24CE4</uniqueIdentifier>
+ <uniqueIdentifier>CC96E51A76C800000196CF0E58F2</uniqueIdentifier>
 </EnsembleReport>
