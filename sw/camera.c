@@ -112,8 +112,10 @@ static int camera_remove(struct platform_device *pdev)
 
 #ifdef CONFIG_OF
 static const struct of_device_id camera_of_match[] = {
-    { .compatible = "csee4840,camera-1.0" },
-    {},
+    { .compatible = "csee4840,camera-1.0" },  /* your custom node */
+    { .compatible = "ALTR,fifo-21.1" },       /* default FIFO core */
+    { .compatible = "ALTR,fifo-1.0" },        /* fallback older format */
+    { /* sentinel */ }
 };
 MODULE_DEVICE_TABLE(of, camera_of_match);
 #endif
