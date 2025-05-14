@@ -17,16 +17,16 @@ module clock_enable (
     input  logic clk,
     output logic slow_clk_en
 );
-    reg [3:0] counter = 0; // 4-bit counter is enough for values 0–9
+    reg [24:0] counter = 0; // 4-bit counter is enough for values 0–9
 
     always_ff @(posedge clk) begin
-        if (counter == 9)
+        if (counter == 25000000)
             counter <= 0;
         else
             counter <= counter + 1;
     end
 
-    assign slow_clk_en = (counter == 9);
+    assign slow_clk_en = (counter == 25000000);
 
 endmodule
 
