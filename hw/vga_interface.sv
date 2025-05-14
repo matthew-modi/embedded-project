@@ -26,7 +26,7 @@ module vga_interface (
   logic        byte_flag;
   logic [15:0] pix16;
 
-  always_ff @(posedge pclk or posedge reset) begin
+  always_ff @(posedge clk or posedge reset) begin
     if (reset) begin
       byte_flag <= 1'b0;
       pix16     <= 16'd0;
@@ -47,7 +47,7 @@ module vga_interface (
   assign VGA_B = { pix16[4:0],   3'b000 };
 
   // Drive VGA signals directly from camera strobes
-  assign VGA_CLK     = pclk;
+  assign VGA_CLK     = clk;
   assign VGA_HS      = cam_href;    // use HREF instead of standard hsync
   assign VGA_VS      = cam_vsync;   // use VSYNC directly
   assign VGA_BLANK_n = cam_href;    // blank when not in a valid row
