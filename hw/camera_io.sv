@@ -1,4 +1,5 @@
 module camera_io (
+  input logic      fake_clk,
   input logic       clk,         // 25 MHz PLL
   input  logic        reset,       // active‐high synchronous reset
 
