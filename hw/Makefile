@@ -121,8 +121,7 @@ $(DTS) : $(SOPCINFO) $(BOARD_INFO)
 	sopc2dts --input $(SOPCINFO) \
 		--output $(DTS) \
 		--type dts \
-		--board $(BOARD_INFO) \
-		--clocks
+		--board $(BOARD_INFO)
 
 # preloader
 #

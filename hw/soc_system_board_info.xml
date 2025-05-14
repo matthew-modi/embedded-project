@@ -227,6 +227,7 @@ of the Linux kernel.  One typically executes sopc2dts as follows:
 <val type="hex">0x1000</val>
 </DTAppend>
 
+<!-- Added by mmodi -->
 
 
 <Chosen>
