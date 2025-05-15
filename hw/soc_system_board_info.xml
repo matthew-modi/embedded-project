@@ -98,6 +98,7 @@ of the Linux kernel.  One typically executes sopc2dts as follows:
 <DTAppend name="status" type="string" parentlabel="hps_0_gmac0" val="disabled"/>
 <DTAppend name="status" type="string" parentlabel="hps_0_uart1" val="disabled"/>
 <DTAppend name="status" type="string" parentlabel="hps_0_usb0" val="disabled"/>
+<DTAppend name="status" type="string" parentlabel="hps_0_usb1" val="disabled"/>
 <DTAppend name="status" type="string" parentlabel="hps_0_nand0" val="disabled"/>
 <DTAppend name="clocks" type="phandle" parentlabel="hps_0_nand0" val="nand_clk"/>
 
